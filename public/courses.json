@@ -1,0 +1,191 @@
+[
+  {
+    "id": "course_001",
+    "title": "Python for Everybody",
+    "enrollment": 2200,
+    "rating": 4.8,
+    "category": "Computer Science",
+    "description": "A beginner-friendly course covering Python basics, from installation to web data extraction and using databases.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540722/courses/online-course-8_iyf0t2.jpg"
+  },
+  {
+    "id": "course_002",
+    "title": "The Science of Well-Being",
+    "enrollment": 4000,
+    "rating": 4.9,
+    "category": "Personal Development",
+    "description": "Focuses on enhancing happiness through psychological insights and behavioral techniques.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540686/courses/online-course-12_e3arid.webp"
+  },
+  {
+    "id": "course_003",
+    "title": "AI for Everyone",
+    "enrollment": 6900,
+    "rating": 4.8,
+    "category": "Artificial Intelligence",
+    "description": "An introduction to AI designed for non-engineers, covering AI fundamentals, limitations, and ethical issues.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540722/courses/online-course-9_szkg0d.jpg"
+  },
+  {
+    "id": "course_004",
+    "title": "Foundations of Project Management",
+    "enrollment": 2360,
+    "rating": 4.7,
+    "category": "Project Management",
+    "description": "Covers core project management skills and methodologies, suitable for beginners in the field.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540692/courses/online-course-7_nniqjy.jpg"
+  },
+  {
+    "id": "course_005",
+    "title": "Introduction to HTML5",
+    "enrollment": 4200,
+    "rating": 4.7,
+    "category": "Web Development",
+    "description": "Teaches HTML5 basics through hands-on exercises for building web pages.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540691/courses/online-course-6_ryg5cr.jpg"
+  },
+  {
+    "id": "course_006",
+    "title": "What is Data Science?",
+    "enrollment": 4810,
+    "rating": 4.7,
+    "category": "Data Science",
+    "description": "Learn what data science is, how data scientists work, and what tools they use.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540690/courses/online-course-5_lx2itn.jpg"
+  },
+  {
+    "id": "course_007",
+    "title": "COVID-19 Contact Tracing",
+    "enrollment": 1200,
+    "rating": 4.9,
+    "category": "Health",
+    "description": "Learn the basics of COVID-19 transmission, infection timeline, and contact tracing strategies.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540690/courses/online-course-4_uywv95.jpg"
+  },
+  {
+    "id": "course_008",
+    "title": "Programming for Everybody",
+    "enrollment": 2200,
+    "rating": 4.8,
+    "category": "Computer Science",
+    "description": "Learn Python programming from scratch with a focus on beginners.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540690/courses/online-course-3_y2enty.jpg"
+  },
+  {
+    "id": "course_009",
+    "title": "Technical Support Fundamentals",
+    "enrollment": 8350,
+    "rating": 4.7,
+    "category": "IT",
+    "description": "Prepare for an entry-level IT support role with this beginner's course.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540690/courses/online-course-1_yssprd.jpg"
+  },
+  {
+    "id": "course_010",
+    "title": "Learning How to Learn",
+    "enrollment": 30000,
+    "rating": 4.8,
+    "category": "Personal Development",
+    "description": "Learn the science-backed methods of effective learning and memory retention.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540689/courses/online-course-2_xm2ueo.jpg"
+  },
+  {
+    "id": "course_011",
+    "title": "Google IT Automation with Python",
+    "enrollment": 6000,
+    "rating": 4.7,
+    "category": "IT",
+    "description": "Learn Python scripting to automate common system administration tasks.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540689/courses/online-course-21_jyopgj.png"
+  },
+  {
+    "id": "course_012",
+    "title": "Introduction to Financial Accounting",
+    "enrollment": 1500,
+    "rating": 4.8,
+    "category": "Finance",
+    "description": "Learn the basics of financial accounting and how to analyze financial statements.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540689/courses/online-course-20_vowldz.jpg"
+  },
+  {
+    "id": "course_013",
+    "title": "Deep Learning Specialization",
+    "enrollment": 4500,
+    "rating": 4.9,
+    "category": "AI",
+    "description": "Learn the foundations of deep learning, from neural networks to sequence models.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540689/courses/online-course-15_qff7gn.jpg"
+  },
+  {
+    "id": "course_014",
+    "title": "Machine Learning",
+    "enrollment": 38000,
+    "rating": 4.9,
+    "category": "AI",
+    "description": "Master the fundamentals of machine learning algorithms and applications.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540688/courses/online-course-16_is2ole.jpg"
+  },
+  {
+    "id": "course_015",
+    "title": "Data Science Specialization",
+    "enrollment": 6700,
+    "rating": 4.8,
+    "category": "Data Science",
+    "description": "A comprehensive course covering the basics of data science, including R programming.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540687/courses/online-course-10_yahn9h.jpg"
+  },
+  {
+    "id": "course_016",
+    "title": "Introduction to Psychology",
+    "enrollment": 9400,
+    "rating": 4.8,
+    "category": "Psychology",
+    "description": "Learn about psychological concepts such as memory, learning, and consciousness.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540687/courses/online-course-14_b2k9bf.webp"
+  },
+  {
+    "id": "course_017",
+    "title": "Digital Marketing Specialization",
+    "enrollment": 7700,
+    "rating": 4.7,
+    "category": "Marketing",
+    "description": "Master the skills needed to succeed in the digital marketing field.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540687/courses/online-course-17_f3a8do.jpg"
+  },
+  {
+    "id": "course_018",
+    "title": "Google Cloud Platform Fundamentals",
+    "enrollment": 3300,
+    "rating": 4.7,
+    "category": "Cloud Computing",
+    "description": "Understand Google Cloud Platform concepts and how to leverage them in projects.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540687/courses/online-course-19_usptwl.jpg"
+  },
+  {
+    "id": "course_019",
+    "title": "SQL for Data Science",
+    "enrollment": 6300,
+    "rating": 4.8,
+    "category": "Data Science",
+    "description": "Learn SQL for querying, data analysis, and database management.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540687/courses/online-course-13_anjhtl.webp"
+  },
+  {
+    "id": "course_020",
+    "title": "Excel Skills for Business",
+    "enrollment": 9800,
+    "rating": 4.9,
+    "category": "Business",
+    "description": "Develop essential Excel skills for business analysis and decision-making.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540686/courses/online-course-11_upimm4.jpg"
+  },
+  {
+    "id": "course_021",
+    "title": "Blockchain Basics",
+    "enrollment": 1800,
+    "rating": 4.8,
+    "category": "Technology",
+    "description": "Learn the basics of blockchain technology and its applications.",
+    "image_url": "https://res.cloudinary.com/mozammal01/image/upload/v1725540686/courses/online-course-18_cjhr5j.jpg"
+  }
+]

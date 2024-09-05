@@ -1,7 +1,14 @@
+import Banner from "../Banner/Banner";
+import Features from "../Features/Features";
+import PopularCourses from "../PopularCourses/PopularCourses";
+
 const Home = () => {
   return (
     <div>
-      <h3 className="text-2xl">This is Your Big Home</h3>      
+      <Banner></Banner>
+      <div className="hidden lg:block">
+      <PopularCourses></PopularCourses>
+      </div>
     </div>
   );
 };

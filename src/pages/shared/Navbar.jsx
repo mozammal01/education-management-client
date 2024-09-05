@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-import navbarLogo from '../../assets/navbar-logo.jpg'
 import { useState } from "react";
 
 const Navbar = () => {
@@ -39,8 +38,9 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar bg-base-100 max-w-7xl mx-auto items-center">
+    <div className="navbar bg-black text-white bg-opacity-50 z-10 fixed top-0 left-1/2 right-1/2 -translate-x-1/2 max-w-7xl">
 
+      {/* Navbar Start */}
       <div className="navbar-start">
 
         {/* For mobile */}
@@ -68,12 +68,9 @@ const Navbar = () => {
 
         {/* Navbar Logo */}
         <Link className="text-xl" to='/'>
-          <div className="flex items-center">
-            <img width={100} src={navbarLogo} alt="" />
-            <div className="font-semibold -ms-5">
-              <p>Education</p>
-              <p>Management</p>
-            </div>
+          <div className="font-semibold">
+            <p>Education</p>
+            <p>Management</p>
           </div>
         </Link>
 
