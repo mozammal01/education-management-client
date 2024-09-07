@@ -21,7 +21,7 @@ const PopularCourses = () => {
   }, [])
 
   return (
-    <div className="my-20">
+    <div className="">
       <SectionTitle header="Courses" subHeader="You can see what you want to learn"></SectionTitle>
       <div>
         <Swiper
@@ -38,7 +38,7 @@ const PopularCourses = () => {
           {
             courses.map(course =>
               <SwiperSlide key={course.id}>
-                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px]">
+                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] my-20">
                   <figure>
                     <img
                       src={course.image_url}

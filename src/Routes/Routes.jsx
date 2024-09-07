@@ -3,6 +3,8 @@ import Home from "../pages/Home/Home/Home";
 import Root from "../Layout/Root";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOn from "../pages/TeachOn/TeachOn";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUp from "../pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: '/teachOn',
         element: <TeachOn></TeachOn>
+      },
+      {
+        path: '/signIn',
+        element: <SignIn></SignIn>
+      },
+      {
+        path: '/signUp',
+        element: <SignUp></SignUp>
       }
     ]
   },

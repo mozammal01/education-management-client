@@ -107,7 +107,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <a className="btn hover:-translate-y-4">Sign In</a>
+        <Link to='/signIn' className="btn hover:-translate-y-4">Sign In</Link>
       </div>
     </div>
   );
