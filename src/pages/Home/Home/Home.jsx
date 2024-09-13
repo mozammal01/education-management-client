@@ -3,21 +3,23 @@ import Banner from "../Banner/Banner";
 import Features from "../Features/Features";
 import LearnOnline from "../LearnOnline/LearnOnline";
 import PopularCourses from "../PopularCourses/PopularCourses";
+import TeachToday from '../TeachToday/TeachToday';
 
 
 const Home = () => {
   return (
     <>
       <Helmet>
-        <title>EDU || Home</title>
+        <title>EDU || HOME</title>
       </Helmet>
       <div>
-        <Banner></Banner>
+        {/* <Banner></Banner>
         <div className="hidden lg:block">
           <PopularCourses></PopularCourses>
         </div>
         <Features></Features>
-        <LearnOnline></LearnOnline>
+        <LearnOnline></LearnOnline> */}
+        <TeachToday></TeachToday>
       </div>
     </>
   );

@@ -1,24 +1,23 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import {useState } from 'react';
 import { Pagination } from 'swiper/modules';
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const PopularCourses = () => {
 
+
   const [courses, setCourses] = useState([])
+  const axiosSecure = useAxiosSecure();
 
-  useEffect(() => {
-    fetch('courses.json')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setCourses(data)
-      })
+  axiosSecure.get('/courses')
+  .then(res => {
+    setCourses(res.data)
+  })
 
-  }, [])
 
   return (
     <div className="">

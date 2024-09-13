@@ -1,18 +1,46 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SignIn = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location);
+
+  const { signIn, googleLogin } = useAuth();
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(result => {
+        navigate(location.state || '/')
+        console.log(result);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
 
   // Form 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
 
   const onSubmit = (data) => {
-    reset();
-    Swal.fire("Sign IN Successfull");
+    signIn(data.email, data.password)
+      .then(result => {
+        reset();
+        Swal.fire("Sign IN Successfull");
+        navigate(location.state || '/')
+      })
+      .catch(err => {
+        console.error(err);
+      })
     console.log(data)
   }
 
@@ -30,7 +58,7 @@ const SignIn = () => {
       </Helmet>
       <div className="flex items-center justify-center min-h-screen md:bg-gradient-to-br from-blue-500 to-purple-600">
 
-        <div className="w-80 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
+        <div className="w-80 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg my-10">
 
           <h2 className="text-2xl font-bold text-center text-gray-800">Sign In</h2>
 
@@ -100,6 +128,9 @@ const SignIn = () => {
             <p>Do not have an Account ? <Link to="/signUp" className="font-bold underline">Sign Up</Link></p>
 
           </form>
+
+          <button onClick={handleGoogleLogin} className="flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <FcGoogle className="text-3xl" />
+            Sign In With Google</button>
 
         </div>
 

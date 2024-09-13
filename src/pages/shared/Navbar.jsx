@@ -1,7 +1,11 @@
+import userImg from '../../assets/Others/user.jpg'
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
+
+  const { user, logOut } = useAuth();
 
   const [homeClicked, setHomeClicked] = useState(false)
   const [allClassClicked, setAllClassClicked] = useState(false)
@@ -28,12 +32,22 @@ const Navbar = () => {
     setAllClassClicked(false)
   }
 
+  const handleLogOut = () => {
+    logOut()
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
 
   const navLinks = <>
 
     <li onClick={handleHomeClicked} className={homeClicked ? 'border-b-2 border-blue-400' : 'hover:border-b-2 border-red-400'}><Link to='/'>Home</Link></li>
     <li onClick={handleAllClassClicked} className={allClassClicked ? 'border-b-2 border-blue-400' : 'hover:border-b-2 border-red-400'}><Link to='/allClasses'>All Classes</Link></li>
-    <li onClick={handleTeachOnClicked} className={teachOnClicked ? 'border-b-2 border-blue-400' : 'hover:border-b-2 border-red-400'}><Link to='/teachOn'>Teach on</Link></li>
+    <li onClick={handleTeachOnClicked} className={teachOnClicked ? 'border-b-2 border-blue-400' : 'hover:border-b-2 border-red-400'}><Link to='/teachOn'>Teach on EM</Link></li>
   </>
 
 
@@ -87,27 +101,32 @@ const Navbar = () => {
       <div className="navbar-end gap-5 flex items-center">
 
         {/* User Photo*/}
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mt-2">
-            <img
-              className="rounded-full"
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-36 shadow">
-
-            <div className="p-2 flex flex-col font-bold">
-              <li className="text-center py-2">Your Name</li>
-              <Link className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
-              <Link className="hover:bg-warning rounded-xl text-center py-2">LogOut</Link>
+        {user ?
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mt-2">
+              {
+                user?.photoURL ? <img
+                  className="rounded-full"
+                  src={user?.photoURL} />
+                  :
+                  <img
+                    className="rounded-full"
+                    alt="Tailwind CSS Navbar component"
+                    src={userImg}/>
+              }
             </div>
+            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <div className="p-2 flex flex-col font-bold text-black">
+                <li className="text-center py-2">{user?.displayName}</li>
+                <Link to='/dashboard' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
+                <li onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</li>
+              </div>
+            </ul>
+          </div>
+          :
+          <Link to='/signIn' className="btn hover:-translate-y-4">Sign In</Link>
+        }
 
-          </ul>
-        </div>
-
-        <Link to='/signIn' className="btn hover:-translate-y-4">Sign In</Link>
       </div>
     </div>
   );

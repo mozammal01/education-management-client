@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 export const AuthContext = createContext(null);
@@ -11,6 +12,9 @@ const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const axiosSecure = useAxiosSecure();
+
 
   // Create User 
   const createUser = (email, password) => {
@@ -27,18 +31,43 @@ const AuthProvider = ({ children }) => {
   // Log Out
   const logOut = () => {
     setLoading(true)
-    return signOut();
+    return signOut(auth);
+  }
+
+  // GoogleLogin 
+  const provider = new GoogleAuthProvider();
+  const googleLogin = () => {
+    setLoading(true)
+    return signInWithPopup(auth, provider)
+  }
+
+  // Update User Profile
+  const updateUserProfile = (name, photo) => {
+    setLoading(true)
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo
+    })
   }
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
+      console.log("Current User", currentUser);
       if (currentUser) {
-        console.log("Current User", currentUser);
-        // setLoading(false)
+        const email = currentUser.email;
+        const userInfo = { email };
+        axiosSecure.post('/jwt', userInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+              setLoading(false)
+            }
+          })
       }
       else {
         setLoading(false)
+        localStorage.removeItem('access-token')
       }
     })
     return () => {
@@ -51,8 +80,13 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signIn,
-    logOut
+    googleLogin,
+    logOut,
+    updateUserProfile,
+
   }
+
+
   return (
     <AuthContext.Provider value={authInfo}>
       {children}

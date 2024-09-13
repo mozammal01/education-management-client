@@ -1,10 +1,15 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home/Home";
 import Root from "../Layout/Root";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOn from "../pages/TeachOn/TeachOn";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import TeachSignUp from "../pages/TeachSignUp/TeachSignUp";
+import Dashboard from "../Layout/Dashboard";
+import Allusers from "../pages/Dashboard/AllUsers/Allusers";
+import PrivateRoutes from "./PrivateRoutes";
+
 
 const router = createBrowserRouter([
   {
@@ -13,12 +18,12 @@ const router = createBrowserRouter([
     errorElement: <div>There is a error here</div>,
     children: [
       {
-        path: '/', 
+        path: '/',
         element: <Home></Home>
       },
       {
-        path: '/allClasses', 
-        element: <AllClasses></AllClasses>
+        path: '/allClasses',
+        element: <PrivateRoutes><AllClasses></AllClasses></PrivateRoutes>
       },
       {
         path: '/teachOn',
@@ -30,10 +35,24 @@ const router = createBrowserRouter([
       },
       {
         path: '/signUp',
-        element: <SignUp></SignUp>
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: '/teachSignUp',
+        element: <TeachSignUp></TeachSignUp>
       }
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+    children: [
+      {
+        path: 'allUsers',
+        element: <Allusers></Allusers>
+      }
+    ]
+  }
 ]);
 
 export default router

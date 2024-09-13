@@ -1,38 +1,65 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { AuthContext } from "../../provider/AuthProvider";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SignUp = () => {
 
-  const { createUser } = useContext(AuthContext)
-  // const { createUser } = useAuth();
+  const navigate = useNavigate();
+  const { createUser, googleLogin, updateUserProfile } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(result => {
+        navigate('/')
+        console.log(result);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
 
   // Form 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
 
   const onSubmit = (data) => {
-    const { pass1, pass2, email } = data;
+    const { pass1, pass2, name, photoUrl, email } = data;
     if (pass1 === pass2) {
       createUser(email, pass1)
         .then(result => {
-          Swal.fire("Login Successfull");
+          updateUserProfile(name, photoUrl)
+            .then(() => { })
+            .catch(() => { })
+          reset();
+          navigate('/')
+          axiosSecure.post('/users', data)
+            .then(res => {
+              // console.log(res.data);
+              navigate('/')
+            })
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login successfull",
+            showConfirmButton: false,
+            timer: 1500
+          });
         })
         .catch(err => {
           console.log(err);
         })
-      console.log('Fuck You');
-      reset();
     }
     else {
       console.log('I am not a gay try to another person');
       Swal.fire("Password doesn't match");
     }
-    console.log(data)
+    console.log(data, name)
   }
 
 
@@ -42,6 +69,7 @@ const SignUp = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   const togglePasswordVisibility2 = () => {
     setShowPassword2(!showPassword2);
   };
@@ -53,39 +81,24 @@ const SignUp = () => {
       </Helmet>
       <div className="flex items-center justify-center py-10 md:bg-gradient-to-br from-blue-500 to-purple-600">
 
-        <div className="w-96 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
+        <div onSubmit={handleSubmit(onSubmit)} className="w-96 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
 
           <h2 className="text-2xl font-bold text-center text-gray-800">Sign Up</h2>
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form className="space-y-5">
 
-            <div className="flex gap-5">
-              {/* First Name */}
-              <div className="space-y-2">
-                <label className="text-gray-600 font-bold">First Name</label>
+            {/* First Name */}
+            <div className="space-y-2">
+              <label className="text-gray-600 font-bold">Name</label>
 
-                <input
-                  {...register('fName')}
-                  type="text"
-                  id="fName"
-                  placeholder="First Name"
-                  className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              {/* Last Name */}
-              <div className="space-y-2">
-                <label className="text-gray-600 font-bold">Last Name</label>
-
-                <input
-                  {...register('lName')}
-                  type="text"
-                  id="lName"
-                  placeholder="Last Name"
-                  className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
+              <input
+                {...register('name')}
+                type="text"
+                id="name"
+                placeholder="Enter Your Name"
+                className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
 
             </div>
 
@@ -100,6 +113,17 @@ const SignUp = () => {
                 placeholder="Photo Url"
                 className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
+            </div>
+
+            {/* Role */}
+            <div className="space-y-2">
+              <label className="text-gray-600 font-bold">Role</label>
+
+              <select {...register("role")}>
+                <option disabled value="Select a Role">Select a Role</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+              </select>
             </div>
 
             {/* Email */}
@@ -177,12 +201,7 @@ const SignUp = () => {
             </div>
 
             {/* Gender */}
-            {/* <select {...register("gender")}>
-            <option disabled value="Select a Gender">Select a gender</option>
-            <option value="female">female</option>
-            <option value="male">male</option>
-            <option value="other">other</option>
-          </select> */}
+
 
 
             {/* Submit */}
@@ -195,6 +214,9 @@ const SignUp = () => {
             <p>Already have an Account ? <Link to="/signIn" className="font-bold underline">Sign In</Link></p>
 
           </form>
+
+          <button onClick={handleGoogleLogin} className="flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <FcGoogle className="text-3xl" />
+            Sign In With Google</button>
 
         </div>
 
