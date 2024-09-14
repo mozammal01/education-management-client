@@ -4,16 +4,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import {useState } from 'react';
 import { Pagination } from 'swiper/modules';
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 const PopularCourses = () => {
 
 
   const [courses, setCourses] = useState([])
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
-  axiosSecure.get('/courses')
+  axiosPublic.get('/courses')
   .then(res => {
     setCourses(res.data)
   })

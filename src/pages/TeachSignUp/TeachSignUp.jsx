@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -12,7 +12,7 @@ const TeachSignUp = () => {
 
   const navigate = useNavigate();
   const { createUser, googleLogin, updateUserProfile } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   const handleGoogleLogin = () => {
     googleLogin()
@@ -37,7 +37,7 @@ const TeachSignUp = () => {
           .catch(() => { })
         reset();
         navigate('/')
-        axiosSecure.post('/users', data)
+        axiosPublic.post('/users', data)
           .then(res => {
             // console.log(res.data);
             navigate('/')

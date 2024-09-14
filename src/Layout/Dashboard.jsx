@@ -4,14 +4,36 @@ const Dashboard = () => {
   return (
     <div className="grid grid-cols-5 min-h-screen">
 
-      <div className="bg-cyan-400 flex flex-col p-4 font-bold gap-5">
-        <NavLink to='/dashboard/allUsers' className="text-center rounded">All Users</NavLink>
-        <NavLink to='/' className="text-center rounded">Home</NavLink>
-        <NavLink to='/' className="text-center rounded">Home</NavLink>
-        <NavLink to='/' className="text-center rounded">Home</NavLink>
-        <NavLink to='/' className="text-center rounded">Home</NavLink>
-        <NavLink to='/' className="text-center rounded">Home</NavLink>
-        <NavLink to='/' className="text-center rounded">Home</NavLink>
+      <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
+
+        <li>
+          <NavLink to='/dashboard/allUsers' className="text-center rounded">All Users</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/' className="text-center rounded">Home</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/' className="text-center rounded">Home</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/' className="text-center rounded">Home</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/' className="text-center rounded">Home</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/' className="text-center rounded">Home</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/' className="text-center rounded">Home</NavLink>
+        </li>
+
       </div>
 
       <div className="col-span-3 mx-5">

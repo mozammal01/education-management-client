@@ -1,34 +1,39 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { BiTrash } from "react-icons/bi";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Allusers = () => {
-  const axiosSecure = useAxiosSecure();
+  const auth = useAuth(); 
+  const navigate = useNavigate();
+
+  const axiosPublic = useAxiosPublic({auth, navigate });
 
   const { data: users = [], error, isPending, refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/users')
+      const res = await axiosPublic.get('/users')
       return res.data
     }
   })
 
   const handleDelete = (id) => {
-    axiosSecure.delete(`/users/${id}`)
-      .then(res => {
-        console.log(res.data);
-        if (res.data.deletedCount > 0) {
-          Swal.fire({
-            title: "Are you a sure you want to delete it?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Delete It!"
-          }).then((result) => {
-            if (result.isConfirmed) {
+    Swal.fire({
+      title: "Are you a sure you want to delete it?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete It!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic.delete(`/users/${id}`)
+          .then(res => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
               refetch();
               Swal.fire({
                 title: "Deleted!",
@@ -37,8 +42,8 @@ const Allusers = () => {
               });
             }
           });
-        }
-      })
+      }
+    })
   }
 
   return (

@@ -118,7 +118,7 @@ const Navbar = () => {
             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
               <div className="p-2 flex flex-col font-bold text-black">
                 <li className="text-center py-2">{user?.displayName}</li>
-                <Link to='/dashboard' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
+                <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
                 <li onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</li>
               </div>
             </ul>
