@@ -11,58 +11,34 @@ import { FcGoogle } from "react-icons/fc";
 const TeachSignUp = () => {
 
   const navigate = useNavigate();
-  const { createUser, googleLogin, updateUserProfile } = useAuth();
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then(result => {
-        navigate('/')
-        console.log(result);
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  }
+  const { photoURL } = user;
 
   // Form 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
 
   const onSubmit = (data) => {
-    const { pass, name, photoUrl, email } = data;
-    createUser(email, pass1)
-      .then(result => {
-        updateUserProfile(name, photoUrl)
-          .then(() => { })
-          .catch(() => { })
-        reset();
+    console.log(data);
+    const { name, email, experience, category } = data;
+    const teachersData = { name, photoURL, email, experience, category }
+
+    reset();
+    axiosPublic.post('/teachers', teachersData)
+      .then(res => {
+        console.log(res.data);
         navigate('/')
-        axiosPublic.post('/users', data)
-          .then(res => {
-            // console.log(res.data);
-            navigate('/')
-          })
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Login successfull",
-          showConfirmButton: false,
-          timer: 1500
-        });
       })
-      .catch(err => {
-        console.log(err);
-      })
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Request Submitted To Admin",
+      showConfirmButton: false,
+      timer: 1500
+    });
 
-    console.log(data, name)
   }
-
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
 
   return (
@@ -79,7 +55,7 @@ const TeachSignUp = () => {
           {/* Form */}
           <form className="space-y-5">
 
-            {/* First Name */}
+            {/* Name */}
             <div className="space-y-2">
               <label className="text-gray-600 font-bold">Name</label>
 
@@ -93,17 +69,15 @@ const TeachSignUp = () => {
 
             </div>
 
-            {/* Photo Url */}
-            <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Photo Url</label>
+            {/* Experience */}
+            <div className="space-x-2">
+              <label className="text-gray-600 font-bold">Experience</label>
 
-              <input
-                {...register('photoUrl')}
-                type="text"
-                id="photoUrl"
-                placeholder="Photo Url"
-                className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <select className="border-2 rounded-xl p-1" {...register("experience")}>
+                <option value="beginner">Beginner</option>
+                <option value="midLevel">Mid level</option>
+                <option value="experienced">Experienced</option>
+              </select>
             </div>
 
             {/* Email */}
@@ -113,6 +87,7 @@ const TeachSignUp = () => {
               <input
                 {...register('email', { required: true })}
                 type="email"
+                value={user?.email}
                 id="email"
                 placeholder="Enter Your Email"
                 className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -122,50 +97,27 @@ const TeachSignUp = () => {
 
             </div>
 
-            {/* Password */}
-            <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Password</label>
+            {/* Category */}
+            <div className="space-x-2">
+              <label className="text-gray-600 font-bold">Category</label>
 
-              <input
-                {...register('pass', { required: true })}
-                type={showPassword ? "text" : "password"}
-                id="pass"
-                placeholder="Enter Your Password"
-                className="w-full px-4 py-2 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-
-              {errors.pass1 && <span className="text-red-600 font-bold pt-4">Your Password is Empty</span>}
-
+              <select className="border-2 rounded-xl p-1" {...register("category")}>
+                <option value="WD">Web Development</option>
+                <option value="DM">Digital Marketing</option>
+                <option value="AD">App Development</option>
+                <option value="AI">Artifitial Intelligent</option>
+                <option value="GD">Graphic Design</option>
+              </select>
             </div>
-
-            {/* Show Password */}
-            <div className="flex items-center space-x-2 -space-y-2">
-              <input
-                type="checkbox"
-                id="show-password"
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                checked={showPassword}
-                onChange={togglePasswordVisibility}
-              />
-              <label htmlFor="show-password" className=" text-gray-600 font-semibold">Show Password</label>
-
-            </div>
-
-
 
             {/* Submit */}
             <div className="text-center">
               <button
                 type="submit"
-                className="w-full px-6 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Sign Up</button>
+                className="w-full px-6 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Submit for review</button>
             </div>
 
-            <p>Already have an Account ? <Link to="/signIn" className="font-bold underline">Sign In</Link></p>
-
           </form>
-
-          <button onClick={handleGoogleLogin} className="flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <FcGoogle className="text-3xl" />
-            Sign In With Google</button>
 
         </div>
 

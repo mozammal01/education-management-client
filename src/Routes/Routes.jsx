@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
 import Teachers from "../pages/Dashboard/Teachers/Teachers";
 import Students from "../pages/Dashboard/Students/Students";
+import RequestForTeacher from "../pages/Dashboard/RequestForTeacher/RequestForTeacher";
 
 
 const router = createBrowserRouter([
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/teachOn',
-        element: <TeachOn></TeachOn>
+        element: <PrivateRoutes><TeachOn></TeachOn></PrivateRoutes>
       },
       {
         path: '/signIn',
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/teachSignUp',
-        element: <TeachSignUp></TeachSignUp>
+        element: <PrivateRoutes><TeachSignUp></TeachSignUp></PrivateRoutes>
       }
     ]
   },
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: 'allUsers',
         element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
+      },
+      {
+        path: 'requestForTeacher',
+        element: <AdminRoutes><RequestForTeacher></RequestForTeacher></AdminRoutes>
       },
       {
         path: 'teachers',

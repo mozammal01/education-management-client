@@ -107,7 +107,7 @@ const SignUp = () => {
             </div>
 
             {/* Role */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <label className="text-gray-600 font-bold">Role</label>
 
               <select {...register("role")}>
@@ -115,7 +115,7 @@ const SignUp = () => {
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
               </select>
-            </div>
+            </div> */}
 
             {/* Email */}
             <div className="space-y-2">

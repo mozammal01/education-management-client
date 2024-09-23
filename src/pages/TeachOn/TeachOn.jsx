@@ -17,12 +17,7 @@ const TeachOn = () => {
       confirmButtonText: "Yes, Sign Up!"
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate('/signUp')
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your file has been deleted.",
-        //   icon: "success"
-        // });
+        navigate('/teachSignUp')
       }
     });
   }
