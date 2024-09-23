@@ -5,25 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { FcGoogle } from "react-icons/fc";
+import GoogleSignIn from "../../components/SocialLogin/GoogleSignIn";
 
 
 const SignUp = () => {
 
   const navigate = useNavigate();
-  const { createUser, googleLogin, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then(result => {
-        navigate('/')
-        console.log(result);
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  }
+  
 
   // Form 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
@@ -40,7 +31,7 @@ const SignUp = () => {
           navigate('/')
           axiosPublic.post('/users', data)
             .then(res => {
-              // console.log(res.data);
+              console.log(res.data);
               navigate('/')
             })
           Swal.fire({
@@ -215,8 +206,7 @@ const SignUp = () => {
 
           </form>
 
-          <button onClick={handleGoogleLogin} className="flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <FcGoogle className="text-3xl" />
-            Sign In With Google</button>
+          <GoogleSignIn></GoogleSignIn>
 
         </div>
 

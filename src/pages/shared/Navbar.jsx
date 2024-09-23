@@ -2,10 +2,13 @@ import userImg from '../../assets/Others/user.jpg'
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from '../../Hooks/useAdmin';
 
 const Navbar = () => {
 
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
+
+  const [isAdmin] = useAdmin({ enabled: !loading && !!user?.email, user });
 
   const [homeClicked, setHomeClicked] = useState(false)
   const [allClassClicked, setAllClassClicked] = useState(false)
@@ -112,13 +115,16 @@ const Navbar = () => {
                   <img
                     className="rounded-full"
                     alt="Tailwind CSS Navbar component"
-                    src={userImg}/>
+                    src={userImg} />
               }
             </div>
             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
               <div className="p-2 flex flex-col font-bold text-black">
                 <li className="text-center py-2">{user?.displayName}</li>
-                <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
+                {
+                  isAdmin ? <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link> :
+                    <Link to='/dashboard' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
+                }
                 <li onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</li>
               </div>
             </ul>

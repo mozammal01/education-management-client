@@ -3,7 +3,7 @@ import TeachTodayImg from '../../../assets/Others/TeachToday.jpg'
 
 const TeachToday = () => {
   return (
-    <div className="bg-base-200 min-h-screen my-10">
+    <div className="bg-base-200 py-10 min-h-screen my-10">
       <div className='flex gap-10 items-center'>
         <div className="w-2/3 gap-10">
           <img

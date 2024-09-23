@@ -9,13 +9,16 @@ import TeachSignUp from "../pages/TeachSignUp/TeachSignUp";
 import Dashboard from "../Layout/Dashboard";
 import Allusers from "../pages/Dashboard/AllUsers/Allusers";
 import PrivateRoutes from "./PrivateRoutes";
+import AdminRoutes from "./AdminRoutes";
+import Teachers from "../pages/Dashboard/Teachers/Teachers";
+import Students from "../pages/Dashboard/Students/Students";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement: <div className="text-5xl text-center">Fuck You</div>,
+    errorElement: <div className="text-5xl text-center">There is a Error Here</div>,
     children: [
       {
         path: '/',
@@ -49,7 +52,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'allUsers',
-        element: <Allusers></Allusers>
+        element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
+      },
+      {
+        path: 'teachers',
+        element: <AdminRoutes><Teachers></Teachers></AdminRoutes>
+      },
+      {
+        path: 'students',
+        element: <AdminRoutes><Students></Students></AdminRoutes>
       }
     ]
   }

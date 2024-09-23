@@ -1,52 +1,66 @@
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import useAuth from "./useAuth";
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../firebase/firebase.config";
 
 
-// const axiosSecure = axios.create({
-//   baseURL: 'http://localhost:4000'
-// })
+const axiosSecure = axios.create({
+  baseURL: 'http://localhost:4000'
+})
+
+const auth = getAuth(app);
+
+const useAxiosSecure = () => {
+
+  const logOut = () => {
+    signOut(auth)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
 
 
-// const useAxiosSecure = ({ logOut, navigate }) => {
+  // request interceptors to add authorization header for every secure call to the api
+  axiosSecure.interceptors.request.use(function (config) {
+    const token = localStorage.getItem('access-token')
+    // console.log('Request stopped by intercenptor');
 
+    config.headers.authorization = `Bearer ${token}`
 
-//   // request interceptors to add authorization header for every secure call to the api
-//   axiosSecure.interceptors.request.use(function (config) {
-//     const token = localStorage.getItem('access-token')
-//     console.log('Request stopped by intercenptor');
+    return config
+  }, function (err) {
+    return Promise.reject(err);
+  })
 
-//     config.headers.authorization = `Bearer ${token}`
+  // Response
+  axiosSecure.interceptors.response.use(function (response) {
+    return response
+  }, function (err) {
 
-//     return config
-//   }, function (err) {
-//     return Promise.reject(err);
-//   })
+    // console.log('Status error in the interceptor', err.response.status);
+    const status = err?.response?.status;
 
-//   // Response
-//   axiosSecure.interceptors.response.use(function (response) {
-//     return response
-//   }, function (err) {
+    if (status === 401 || status === 403) {
+      logOut()
+        .then(result => {
+          console.log(result);
+        })
+        .catch(err => {
+          console.error(err);
+        })
+      // navigate('/signIn')
 
-//     // console.log('Status error in the interceptor', err.response.status);
-//     const status = err.response.status;
+    }
 
-//     if (status === 401 || status === 403) {
-//       logOut()
-//         .then(result => {
-//           console.log(result);
-//         })
-//         .catch(err => {
-//           console.error(err);
-//         })
-//       navigate('/signIn')
+    return Promise.reject(err)
 
-//     }
+  })
 
-//     return Promise.reject(err)
+  return axiosSecure;
+};
 
-//   })
-
-//   return axiosSecure;
-// };
-
-// export default useAxiosSecure;
+export default useAxiosSecure;

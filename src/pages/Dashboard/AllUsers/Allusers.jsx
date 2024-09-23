@@ -1,27 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { BiTrash } from "react-icons/bi";
 import Swal from "sweetalert2";
-import useAuth from "../../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 
 const Allusers = () => {
-  const auth = useAuth(); 
-  const navigate = useNavigate();
 
-  const axiosPublic = useAxiosPublic({auth, navigate });
+  const axiosSecure = useAxiosSecure();
 
-  const { data: users = [], error, isPending, refetch } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await axiosPublic.get('/users')
+      const res = await axiosSecure.get('/users')
       return res.data
     }
   })
 
+  const handleMakeAdmin = (id) => {
+    axiosSecure.patch(`/users/admin/${id}`)
+      .then(res => {
+        refetch();
+        console.log(res.data);
+      })
+  }
+
   const handleDelete = (id) => {
     Swal.fire({
-      title: "Are you a sure you want to delete it?",
+      title: "Are you a sure you want to delete this user?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -30,7 +34,7 @@ const Allusers = () => {
       confirmButtonText: "Yes, Delete It!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/users/${id}`)
+        axiosSecure.delete(`/users/${id}`)
           .then(res => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
@@ -74,10 +78,19 @@ const Allusers = () => {
                 <td>{user?.name}</td>
                 <td>
                   <div className="dropdown me-10">
-                    <div tabIndex={0} role="button" className="btn m-1">{user?.role}</div>
-                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                      <li><a>Make Admin</a></li>
-                    </ul>
+                    <div tabIndex={0} role="button" className="btn m-1">
+                      {
+                        user?.role === 'admin' ? "Admin" : user?.role
+                      }
+                    </div>
+
+                    {
+                      user?.role === 'admin' ? ' ' : <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li onClick={() => handleMakeAdmin(user?._id)}><a>Make Admin</a></li>
+
+                      </ul>
+                    }
+
                   </div>
                 </td>
                 <td>{user?.email}</td>

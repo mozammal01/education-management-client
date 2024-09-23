@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { FcGoogle } from "react-icons/fc";
+import GoogleSignIn from "../../components/SocialLogin/GoogleSignIn";
 
 
 const SignIn = () => {
@@ -12,20 +12,8 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
+  const { signIn } = useAuth();
 
-  const { signIn, googleLogin } = useAuth();
-
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then(result => {
-        navigate(location.state || '/')
-        console.log(result);
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  }
 
 
   // Form 
@@ -53,9 +41,11 @@ const SignIn = () => {
 
   return (
     <>
+
       <Helmet>
         <title>EDU || Sign IN</title>
       </Helmet>
+
       <div className="flex items-center justify-center min-h-screen md:bg-gradient-to-br from-blue-500 to-purple-600">
 
         <div className="w-80 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg my-10">
@@ -129,8 +119,7 @@ const SignIn = () => {
 
           </form>
 
-          <button onClick={handleGoogleLogin} className="flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <FcGoogle className="text-3xl" />
-            Sign In With Google</button>
+          <GoogleSignIn></GoogleSignIn>
 
         </div>
 
