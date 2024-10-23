@@ -75,7 +75,7 @@ const Allusers = () => {
             {
               users.map((user, i) => <tr key={i}>
                 <th>{i + 1}</th>
-                <td>{user?.name}</td>
+                <td className="font-bold">{user?.name}</td>
                 <td>
                   <div className="dropdown me-10">
                     <div tabIndex={0} role="button" className="btn m-1">

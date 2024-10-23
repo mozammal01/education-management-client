@@ -1,17 +1,16 @@
-import { useState } from "react";
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { FcGoogle } from "react-icons/fc";
 
 
 const TeachSignUp = () => {
 
   const navigate = useNavigate();
   const { user } = useAuth();
+  console.log(user);
   const axiosPublic = useAxiosPublic();
 
   const { photoURL } = user;
@@ -21,15 +20,23 @@ const TeachSignUp = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    const role = 'requested for teacher'
     const { name, email, experience, category } = data;
-    const teachersData = { name, photoURL, email, experience, category }
+    const teachersData = { name, photoURL, email, experience, category, role }
 
     reset();
-    axiosPublic.post('/teachers', teachersData)
+    axiosPublic.post('/users/teachers', teachersData)
       .then(res => {
         console.log(res.data);
         navigate('/')
       })
+    // axiosPublic.delete(`/users/${user?._id}`)
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   })
     Swal.fire({
       position: "top-end",
       icon: "success",
