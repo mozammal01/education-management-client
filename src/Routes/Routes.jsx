@@ -10,9 +10,11 @@ import Dashboard from "../Layout/Dashboard";
 import Allusers from "../pages/Dashboard/AllUsers/Allusers";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
-import Teachers from "../pages/Dashboard/Teachers/Teachers";
 import Students from "../pages/Dashboard/Students/Students";
 import RequestForTeacher from "../pages/Dashboard/RequestForTeacher/RequestForTeacher";
+import TotalClass from "../pages/Dashboard/TotalClass/TotalClass";
+import PopularCourseDetails from "../pages/Home/PopularCourses/PopularCourseDetails/PopularCourseDetails";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 
 const router = createBrowserRouter([
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/teachSignUp',
         element: <PrivateRoutes><TeachSignUp></TeachSignUp></PrivateRoutes>
+      },
+      {
+        path: '/courseDetails/:id',
+        element: <PrivateRoutes><PopularCourseDetails></PopularCourseDetails></PrivateRoutes>,
       }
     ]
   },
@@ -51,6 +57,14 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
+
+      // Normal User
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
+
+      // Admin 
       {
         path: 'allUsers',
         element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
@@ -60,8 +74,8 @@ const router = createBrowserRouter([
         element: <AdminRoutes><RequestForTeacher></RequestForTeacher></AdminRoutes>
       },
       {
-        path: 'teachers',
-        element: <AdminRoutes><Teachers></Teachers></AdminRoutes>
+        path: 'totalClass',
+        element: <AdminRoutes><TotalClass></TotalClass></AdminRoutes>
       },
       {
         path: 'students',

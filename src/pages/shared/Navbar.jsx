@@ -2,13 +2,13 @@ import userImg from '../../assets/Others/user.jpg'
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-import useAdmin from '../../Hooks/useAdmin';
+import useUser from '../../Hooks/useUser';
 
 const Navbar = () => {
 
   const { user, logOut, loading } = useAuth();
 
-  const [isAdmin] = useAdmin({ enabled: !loading && !!user?.email, user });
+  const [isUser] = useUser({ enabled: !loading && !!user?.email, user });
 
   const [homeClicked, setHomeClicked] = useState(false)
   const [allClassClicked, setAllClassClicked] = useState(false)
@@ -122,7 +122,7 @@ const Navbar = () => {
               <div className="p-2 flex flex-col font-bold text-black">
                 <li className="text-center py-2">{user?.displayName}</li>
                 {
-                  isAdmin ? <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link> :
+                  isUser.admin ? <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link> :
                     <Link to='/dashboard' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
                 }
                 <li onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</li>

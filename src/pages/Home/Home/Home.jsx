@@ -13,13 +13,13 @@ const Home = () => {
         <title>EDU || HOME</title>
       </Helmet>
       <div>
-        {/* <Banner></Banner>
-        <div className="hidden lg:block">
+        {/* <Banner></Banner> */}
+        <div>
           <PopularCourses></PopularCourses>
         </div>
-        <Features></Features>
-        <LearnOnline></LearnOnline> */}
-        <TeachToday></TeachToday>
+        {/* <Features></Features>
+        <LearnOnline></LearnOnline>
+        <TeachToday></TeachToday> */}
       </div>
     </>
   );

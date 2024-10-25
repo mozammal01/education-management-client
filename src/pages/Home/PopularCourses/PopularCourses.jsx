@@ -2,9 +2,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import {useState } from 'react';
+import { useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 
 const PopularCourses = () => {
@@ -14,19 +15,19 @@ const PopularCourses = () => {
   const axiosPublic = useAxiosPublic();
 
   axiosPublic.get('/courses')
-  .then(res => {
-    setCourses(res.data)
-  })
+    .then(res => {
+      setCourses(res.data)
+    })
 
 
   return (
     <div className="">
       <SectionTitle header="Courses" subHeader="You can see what you want to learn"></SectionTitle>
-      <div>
+      <div className="text-center">
         <Swiper
-          slidesPerView={3}
-          centeredSlides={true}
+          slidesPerView={"auto"}
           spaceBetween={30}
+          centeredSlides={true}
           grabCursor={true}
           pagination={{
             clickable: true,
@@ -37,7 +38,7 @@ const PopularCourses = () => {
           {
             courses.map(course =>
               <SwiperSlide key={course.id}>
-                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] my-20">
+                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] my-20 mx-auto">
                   <figure>
                     <img
                       src={course.image_url}
@@ -51,7 +52,7 @@ const PopularCourses = () => {
                     <p>{course.description}</p>
                     <div className="card-actions items-center justify-end">
                       <div className="badge badge-outline">{course.category}</div>
-                      <div className="btn btn-outline">Enroll: {course.enrollment} TK</div>
+                      <div className="btn btn-outline"><Link to={`/courseDetails/${course.id}`}>Enroll: {course.enrollment} TK</Link></div>
                     </div>
                   </div>
                 </div>

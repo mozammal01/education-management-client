@@ -1,62 +1,28 @@
 import { NavLink, Outlet } from "react-router-dom";
-import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
-import useTeacher from "../Hooks/useTeacher";
+import useUser from "../Hooks/useUser";
+// import useTeacher from "../Hooks/useTeacher";
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
-  const [isAdmin] = useAdmin({ enabled: !loading && !!user?.email, user });
+  const [isUser] = useUser({ enabled: !loading && !!user?.email, user });
   // const [isTeacher] = useTeacher({ enabled: !loading && !!user?.email, user })
 
   return (
     <div className="grid grid-cols-6 min-h-screen">
 
       {
-        isAdmin ?
+        isUser.admin ?
 
-          <>
-            <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
-
-              <li>
-                <NavLink to='/dashboard/adminHome' className="text-center rounded">Admin Home</NavLink>
-              </li>
-
-              <li>
-                <NavLink to='/dashboard/requestForTeacher' className="text-center rounded">Request For Teacher</NavLink>
-              </li>
-
-              <li>
-                <NavLink to='/dashboard/allUsers' className="text-center rounded">All Users</NavLink>
-              </li>
-
-              <li>
-                <NavLink to='/dashboard/teachers' className="text-center rounded">Teachers</NavLink>
-              </li>
-
-              <li>
-                <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
-              </li>
-
-              <li>
-                <NavLink to='/dashboard/pendingClasses' className="text-center rounded">Pending Classes</NavLink>
-              </li>
-
-              <li>
-                <NavLink to='/' className="text-center rounded">Home</NavLink>
-              </li>
-
-            </div>
-          </>
-          :
-
+          // Admin
           <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
 
             <li>
-              <NavLink to='/dashboard/teacherHome' className="text-center rounded">Teacher Home</NavLink>
+              <NavLink to='/dashboard/adminHome' className="text-center rounded">Admin Home</NavLink>
             </li>
 
             <li>
-              <NavLink to='/dashboard/requestForTeacher' className="text-center rounded">Add Class</NavLink>
+              <NavLink to='/dashboard/requestForTeacher' className="text-center rounded">Request For Teacher</NavLink>
             </li>
 
             <li>
@@ -64,11 +30,15 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <NavLink to='/dashboard/teachers' className="text-center rounded">Teachers</NavLink>
+              <NavLink to='/dashboard/totalclass' className="text-center rounded">Total Class</NavLink>
             </li>
 
             <li>
               <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
+            </li>
+
+            <li>
+              <NavLink to='/dashboard/pendingClasses' className="text-center rounded">Pending Classes</NavLink>
             </li>
 
             <li>
@@ -77,55 +47,86 @@ const Dashboard = () => {
 
           </div>
 
-        // <>
+          :
+          <>
+            {
+              isUser.student ?
+
+                // Students
+                <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
+
+                  <li>
+                    <NavLink to='/dashboard/teacherHome' className="text-center rounded">Student Home</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to='/dashboard/enroll' className="text-center rounded">My Enroll</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to='/dashboard/payment' className="text-center rounded">Payment</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to='/dashboard/paymentHistory' className="text-center rounded">Payment History</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to='/dashboard/allClass' className="text-center rounded">All Classes</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to='/' className="text-center rounded">Home</NavLink>
+                  </li>
+
+                </div>
+
+                :
+                <>
+                  {isUser.teacher ?
 
 
-        //   {
-        //     isTeacher ? <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
+                    // Teachers
+                    <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
 
-        //       <li>
-        //         <NavLink to='/dashboard/teacherHome' className="text-center rounded">Teacher Home</NavLink>
-        //       </li>
+                      <li>
+                        <NavLink to='/dashboard/teacherHome' className="text-center rounded">Teacher Home</NavLink>
+                      </li>
 
-        //       <li>
-        //         <NavLink to='/dashboard/requestForTeacher' className="text-center rounded">Add Class</NavLink>
-        //       </li>
+                      <li>
+                        <NavLink to='/dashboard/requestForTeacher' className="text-center rounded">Add Class</NavLink>
+                      </li>
 
-        //       <li>
-        //         <NavLink to='/dashboard/allUsers' className="text-center rounded">All Users</NavLink>
-        //       </li>
+                      <li>
+                        <NavLink to='/dashboard/yourClasses' className="text-center rounded">Your Classes</NavLink>
+                      </li>
 
-        //       <li>
-        //         <NavLink to='/dashboard/teachers' className="text-center rounded">Teachers</NavLink>
-        //       </li>
+                      <li>
+                        <NavLink to='/dashboard/teachers' className="text-center rounded">Teachers</NavLink>
+                      </li>
 
-        //       <li>
-        //         <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
-        //       </li>
+                      <li>
+                        <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
+                      </li>
 
-        //       <li>
-        //         <NavLink to='/' className="text-center rounded">Home</NavLink>
-        //       </li>
+                      <li>
+                        <NavLink to='/' className="text-center rounded">Home</NavLink>
+                      </li>
 
-        //     </div> :
+                    </div>
+                    :
+                    <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
 
-        //       <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
+                      <li>
+                        <NavLink to='/' className="text-center rounded">Home</NavLink>
+                      </li>
 
-        //         <li>
-        //           <NavLink to='/dashboard/enrollClass' className="text-center rounded">My Enroll Class</NavLink>
-        //         </li>
+                    </div>
+                  }
+                </>
+            }
+          </>
 
-        //         <li>
-        //           <NavLink to='/dashboard/profile' className="text-center rounded">Profile</NavLink>
-        //         </li>
-
-        //       </div>
-
-        //   }
-
-
-
-        // </>
       }
 
 

@@ -25,7 +25,7 @@ const TeachSignUp = () => {
     const teachersData = { name, photoURL, email, experience, category, role }
 
     reset();
-    axiosPublic.post('/users/teachers', teachersData)
+    axiosPublic.patch('/users/:id', teachersData)
       .then(res => {
         console.log(res.data);
         navigate('/')
