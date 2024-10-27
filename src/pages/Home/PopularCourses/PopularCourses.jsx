@@ -19,6 +19,9 @@ const PopularCourses = () => {
       setCourses(res.data)
     })
 
+  const popularCourses = courses.splice(0, 4)
+  // console.log(popularCourses);
+
 
   return (
     <div className="">
@@ -36,7 +39,7 @@ const PopularCourses = () => {
           className="mySwiper"
         >
           {
-            courses.map(course =>
+            popularCourses.map(course =>
               <SwiperSlide key={course.id}>
                 <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] my-20 mx-auto">
                   <figure>
@@ -59,6 +62,7 @@ const PopularCourses = () => {
               </SwiperSlide>)
           }
         </Swiper>
+        <Link to='/allCourses'><button className="btn my-5">View All Courses</button></Link>
       </div>
     </div>
   );

@@ -56,11 +56,11 @@ const Dashboard = () => {
                 <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">
 
                   <li>
-                    <NavLink to='/dashboard/teacherHome' className="text-center rounded">Student Home</NavLink>
+                    <NavLink to='/dashboard/studentHome' className="text-center rounded">Student Home</NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/dashboard/enroll' className="text-center rounded">My Enroll</NavLink>
+                    <NavLink to='/dashboard/myEnroll' className="text-center rounded">My Enroll</NavLink>
                   </li>
 
                   <li>
@@ -68,11 +68,15 @@ const Dashboard = () => {
                   </li>
 
                   <li>
-                    <NavLink to='/dashboard/paymentHistory' className="text-center rounded">Payment History</NavLink>
+                    <NavLink to='/dashboard/paymentsHistory' className="text-center rounded">Payment History</NavLink>
                   </li>
 
                   <li>
                     <NavLink to='/dashboard/allClass' className="text-center rounded">All Classes</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to='/dashboard/feedback' className="text-center rounded">Feedback</NavLink>
                   </li>
 
                   <li>

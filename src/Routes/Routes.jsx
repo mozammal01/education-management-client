@@ -15,6 +15,10 @@ import RequestForTeacher from "../pages/Dashboard/RequestForTeacher/RequestForTe
 import TotalClass from "../pages/Dashboard/TotalClass/TotalClass";
 import PopularCourseDetails from "../pages/Home/PopularCourses/PopularCourseDetails/PopularCourseDetails";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import MyEnroll from "../pages/Dashboard/MyEnroll/MyEnroll";
+import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
+import AllCourses from "../pages/AllCourses/AllCourses";
+import Feedback from "../pages/Dashboard/Feedback/Feedback";
 
 
 const router = createBrowserRouter([
@@ -48,6 +52,10 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><TeachSignUp></TeachSignUp></PrivateRoutes>
       },
       {
+        path: '/allCourses', 
+        element: <PrivateRoutes><AllCourses></AllCourses></PrivateRoutes>
+      },
+      {
         path: '/courseDetails/:id',
         element: <PrivateRoutes><PopularCourseDetails></PopularCourseDetails></PrivateRoutes>,
       }
@@ -62,6 +70,18 @@ const router = createBrowserRouter([
       {
         path: 'payment',
         element: <Payment></Payment>
+      },
+      {
+        path: 'myEnroll', 
+        element: <MyEnroll></MyEnroll>
+      },
+      {
+        path: 'paymentsHistory',
+        element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: 'feedback', 
+        element: <Feedback></Feedback>
       },
 
       // Admin 

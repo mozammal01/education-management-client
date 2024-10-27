@@ -2,18 +2,29 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import useUser from "../../../Hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 const CheckOutForm = ({ course }) => {
   const [error, setError] = useState('')
   const [clientSecret, setClientSecret] = useState('');
   const [transactionId, setTransactionId] = useState('');
+  const { user, loading } = useAuth();
+
+  const [isUser] = useUser({ enabled: !loading && !!user?.email, user });
+
+  const navigate = useNavigate();
 
   const stripe = useStripe();
   const elements = useElements();
-  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   console.log(course);
+
+  if (!course) {
+    return;
+  }
 
   useEffect(() => {
     axiosSecure.post('/create-payment-intent', { price: course?.enrollment })
@@ -104,6 +115,11 @@ const CheckOutForm = ({ course }) => {
 
 
           if (resEnroll.data) {
+            if (!isUser?.student) {
+              const res = await axiosSecure.patch(`/student/${user?.email}`)
+              console.log(res.data);
+            }
+
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -111,6 +127,7 @@ const CheckOutForm = ({ course }) => {
               showConfirmButton: false,
               timer: 1500
             });
+            navigate('/dashboard/myEnroll')
           }
         }
 
