@@ -122,7 +122,7 @@ const Navbar = () => {
               <div className="p-2 flex flex-col font-bold text-black">
                 <li className="text-center py-2">{user?.displayName}</li>
                 {
-                  isUser.admin ? <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link> :
+                  isUser?.admin ? <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link> :
                     <Link to='/dashboard' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
                 }
                 <li onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</li>

@@ -23,7 +23,13 @@ const SignIn = () => {
     signIn(data.email, data.password)
       .then(result => {
         reset();
-        Swal.fire("Sign IN Successfull");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sign In Successfull",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate(location.state || '/')
       })
       .catch(err => {

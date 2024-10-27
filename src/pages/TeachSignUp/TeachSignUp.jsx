@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 
 const TeachSignUp = () => {
@@ -11,9 +11,10 @@ const TeachSignUp = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   console.log(user);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { photoURL } = user;
+
 
   // Form 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
@@ -25,12 +26,12 @@ const TeachSignUp = () => {
     const teachersData = { name, photoURL, email, experience, category, role }
 
     reset();
-    axiosPublic.patch('/users/:id', teachersData)
+    axiosSecure.patch(`/users/teachers/request/${user?.email}`, teachersData)
       .then(res => {
         console.log(res.data);
         navigate('/')
       })
-    // axiosPublic.delete(`/users/${user?._id}`)
+    // axiosSecure.delete(`/users/${email}`)
     //   .then(res => {
     //     console.log(res.data);
     //   })

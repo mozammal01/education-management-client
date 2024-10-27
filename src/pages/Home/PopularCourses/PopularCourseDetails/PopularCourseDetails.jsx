@@ -29,7 +29,7 @@ const PopularCourseDetails = () => {
         <p>Rating : <span className="font-extrabold">{courseDetails?.rating}</span></p>
         <p className="btn btn-outline">{courseDetails?.category}</p>
         <br />
-        <Link to="/dashboard/payment"><div className="btn bg-black text-white hover:text-black my-5">Pay: {courseDetails?.enrollment}</div></Link>
+        <Link state={courseDetails} to="/dashboard/payment"><div className="btn bg-black text-white hover:text-black my-5">Pay: {courseDetails?.enrollment}</div></Link>
       </div>
     </div>
   );

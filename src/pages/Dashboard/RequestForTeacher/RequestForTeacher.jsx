@@ -53,7 +53,7 @@ const RequestForTeacher = () => {
       confirmButtonText: "Yes, Delete It!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/teachers/${id}`)
+        axiosSecure.delete(`/users/teachers/${id}`)
           .then(res => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {

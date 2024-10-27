@@ -12,7 +12,7 @@ const Dashboard = () => {
     <div className="grid grid-cols-6 min-h-screen">
 
       {
-        isUser.admin ?
+        isUser?.admin ?
 
           // Admin
           <div className="menu bg-cyan-400 flex flex-col p-4 font-bold gap-5">

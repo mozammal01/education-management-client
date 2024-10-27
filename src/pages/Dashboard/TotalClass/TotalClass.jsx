@@ -16,7 +16,7 @@ const TotalClass = () => {
 
   return (
     <div>
-      <h3 className="text-3xl">You can see all Total Class here:  {allClasses.length}</h3>      
+      <h3 className="text-3xl">You can see all Total Class here:  {allClasses?.length}</h3>      
     </div>
   );
 };
