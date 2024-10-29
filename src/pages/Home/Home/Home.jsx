@@ -4,6 +4,7 @@ import Features from "../Features/Features";
 import LearnOnline from "../LearnOnline/LearnOnline";
 import PopularCourses from "../PopularCourses/PopularCourses";
 import TeachToday from '../TeachToday/TeachToday';
+import ShowFeedback from '../ShowFeedback/ShowFeedback';
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
         {/* <Features></Features>
         <LearnOnline></LearnOnline>
         <TeachToday></TeachToday> */}
+        <ShowFeedback></ShowFeedback>
       </div>
     </>
   );

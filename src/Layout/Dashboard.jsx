@@ -34,11 +34,15 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
+              <NavLink to='/dashboard/totalEnrollment' className="text-center rounded">Total Enrollment </NavLink>
             </li>
 
             <li>
               <NavLink to='/dashboard/pendingClasses' className="text-center rounded">Pending Classes</NavLink>
+            </li>
+
+            <li>
+              <NavLink to='/dashboard/myProfile' className="text-center rounded">My Profile</NavLink>
             </li>
 
             <li>
@@ -72,11 +76,11 @@ const Dashboard = () => {
                   </li>
 
                   <li>
-                    <NavLink to='/dashboard/allClass' className="text-center rounded">All Classes</NavLink>
+                    <NavLink to='/dashboard/feedback' className="text-center rounded">Feedback</NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/dashboard/feedback' className="text-center rounded">Feedback</NavLink>
+                    <NavLink to='/dashboard/myProfile' className="text-center rounded">My Profile</NavLink>
                   </li>
 
                   <li>
@@ -111,6 +115,10 @@ const Dashboard = () => {
 
                       <li>
                         <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
+                      </li>
+
+                      <li>
+                        <NavLink to='/dashboard/myProfile' className="text-center rounded">My Profile</NavLink>
                       </li>
 
                       <li>

@@ -9,7 +9,6 @@ const MyEnroll = () => {
     queryKey: ['myEnroll'],
     queryFn: async () => {
       const res = await axiosSecure.get(`/enroll/${user?.email}`)
-      console.log(res.data);
       return res.data
     }
   })
@@ -30,6 +29,7 @@ const MyEnroll = () => {
               <th>Title</th>
               <th>Category</th>
               <th>Price</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -39,6 +39,7 @@ const MyEnroll = () => {
                 <td>{user?.title}</td>
                 <td>{user?.category}</td>
                 <td>{user?.price}</td>
+                <td className="btn btn-success text-white my-2">Continue</td>
               </tr>)
             }
           </tbody>

@@ -19,6 +19,8 @@ import MyEnroll from "../pages/Dashboard/MyEnroll/MyEnroll";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import AllCourses from "../pages/AllCourses/AllCourses";
 import Feedback from "../pages/Dashboard/Feedback/Feedback";
+import TotalEnrollment from "../pages/Dashboard/totalEnrollment/totalEnrollment";
+import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/allClasses',
-        element: <PrivateRoutes><AllClasses></AllClasses></PrivateRoutes>
+        element: <AllCourses></AllCourses>
       },
       {
         path: '/teachOn',
@@ -52,8 +54,8 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><TeachSignUp></TeachSignUp></PrivateRoutes>
       },
       {
-        path: '/allCourses', 
-        element: <PrivateRoutes><AllCourses></AllCourses></PrivateRoutes>
+        path: '/allCourses',
+        element: <AllCourses></AllCourses>
       },
       {
         path: '/courseDetails/:id',
@@ -72,7 +74,7 @@ const router = createBrowserRouter([
         element: <Payment></Payment>
       },
       {
-        path: 'myEnroll', 
+        path: 'myEnroll',
         element: <MyEnroll></MyEnroll>
       },
       {
@@ -80,8 +82,12 @@ const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>
       },
       {
-        path: 'feedback', 
+        path: 'feedback',
         element: <Feedback></Feedback>
+      },
+      {
+        path:'myProfile',
+        element: <MyProfile></MyProfile>
       },
 
       // Admin 
@@ -100,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: 'students',
         element: <AdminRoutes><Students></Students></AdminRoutes>
+      },
+      {
+        path: 'totalEnrollment',
+        element: <AdminRoutes><TotalEnrollment></TotalEnrollment></AdminRoutes>
       }
     ]
   }
