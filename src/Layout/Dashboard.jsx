@@ -38,7 +38,7 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <NavLink to='/dashboard/pendingClasses' className="text-center rounded">Pending Classes</NavLink>
+              <NavLink to='/dashboard/pendingClass' className="text-center rounded">Pending Class</NavLink>
             </li>
 
             <li>
@@ -102,7 +102,7 @@ const Dashboard = () => {
                       </li>
 
                       <li>
-                        <NavLink to='/dashboard/requestForTeacher' className="text-center rounded">Add Class</NavLink>
+                        <NavLink to='/dashboard/addClass' className="text-center rounded">Add Class</NavLink>
                       </li>
 
                       <li>

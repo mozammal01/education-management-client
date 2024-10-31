@@ -21,6 +21,8 @@ import AllCourses from "../pages/AllCourses/AllCourses";
 import Feedback from "../pages/Dashboard/Feedback/Feedback";
 import TotalEnrollment from "../pages/Dashboard/totalEnrollment/totalEnrollment";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
+import PendingClass from "../pages/Dashboard/PendingClass/PendingClass";
 
 
 const router = createBrowserRouter([
@@ -89,6 +91,10 @@ const router = createBrowserRouter([
         path:'myProfile',
         element: <MyProfile></MyProfile>
       },
+      {
+        path: 'addClass',
+        element:< AddClass></AddClass>
+      },
 
       // Admin 
       {
@@ -110,6 +116,10 @@ const router = createBrowserRouter([
       {
         path: 'totalEnrollment',
         element: <AdminRoutes><TotalEnrollment></TotalEnrollment></AdminRoutes>
+      },
+      {
+        path: 'pendingClass',
+        element: <AdminRoutes><PendingClass></PendingClass></AdminRoutes>
       }
     ]
   }
