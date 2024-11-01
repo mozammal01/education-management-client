@@ -3,7 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const YourClasses = () => {
 
@@ -20,7 +20,7 @@ const YourClasses = () => {
   })
 
   const handleUpdate = (id) => {
-    navigate('/dashboard/updateClass')
+
   }
 
   const handleDelete = async (id) => {
@@ -92,7 +92,7 @@ const YourClasses = () => {
                   </div>
                   {/*  */}
                   <div>
-                    <div className=""><button onClick={handleUpdate} className="text-3xl bg-green-600 rounded-xl text-white p-2 my-2"><BiEdit></BiEdit></button></div>
+                    <div className="text-3xl bg-green-600 rounded-xl text-white p-2 my-2"><Link to={`/dashboard/updateClass/${course?._id}`} onClick={handleUpdate}><BiEdit></BiEdit></Link></div>
                     <div className=""><button onClick={() => handleDelete(course?._id)} className="text-3xl bg-red-600 rounded-xl text-white p-2 my-2"><BiTrash></BiTrash></button></div>
                   </div>
                 </div>

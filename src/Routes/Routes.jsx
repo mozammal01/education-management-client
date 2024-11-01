@@ -98,7 +98,7 @@ const router = createBrowserRouter([
         element:< AddClass></AddClass>
       },
       {
-        path: 'updateClass',
+        path: 'updateClass/:id',
         element:<UpdateClass></UpdateClass>
       },
       {
