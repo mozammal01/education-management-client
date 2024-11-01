@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
+import Swal from "sweetalert2";
 
 const TotalClass = () => {
 
   const [allClasses, setAllClasses] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
   const [itemsPerPage, setItemsPerPage] = useState(7)
   const [count, setCount] = useState(0);
   const axiosSecure = useAxiosSecure();
@@ -25,24 +27,17 @@ const TotalClass = () => {
   }, [currentPage, itemsPerPage]);
 
 
-  // const { data: allClasses } = useQuery({
-  //   queryKey: ['courses'],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get('courses')
-  //     console.log(res.data);
-  //     return res.data
-  //   }
-  // })
+  const { data: allCourses, refetch } = useQuery({
+    queryKey: ['courses'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('courses')
+      console.log(res.data);
+      return res.data
+    }
+  })
 
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()];
-
-
-  const handleItemsPerPage = e => {
-    const value = parseInt(e.target.value);
-    setItemsPerPage(value)
-    setCurrentPage(0)
-  }
 
   const handlePrevPage = () => {
     if (currentPage > 0) {
@@ -55,11 +50,42 @@ const TotalClass = () => {
     }
   }
 
+  const handleDelete = async(id) => {
+    // console.log('Class Deleted', id);
+
+    Swal.fire({
+      title: "Are you a sure you want to delete this user?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete It!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/courses/${id}`)
+          .then(res => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Class Deleted successfull",
+                icon: "success"
+              });
+            }
+          });
+      }
+    })
+    
+
+  }
+
 
 
   return (
     <div className="my-10">
-      <h3 className="text-3xl text-center font-bold text-red-500">Total Class :  {allClasses?.length}</h3>
+      <h3 className="text-3xl text-center font-bold text-red-500">Total Class :  {allCourses?.length}</h3>
 
       <div className="overflow-x-auto my-20">
         <table className="table">
@@ -71,6 +97,7 @@ const TotalClass = () => {
               <th>Rating</th>
               <th>Category</th>
               <th>Price</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -96,6 +123,7 @@ const TotalClass = () => {
                   <td>{classes?.rating}</td>
                   <td>{classes?.category}</td>
                   <td>{classes?.enrollment}</td>
+                  <td><button onClick={() => handleDelete(classes?._id)} className="text-3xl bg-red-600 rounded-xl text-white p-2 my-2"><BiTrash></BiTrash></button></td>
                 </tr>
                 )
 

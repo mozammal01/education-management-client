@@ -17,15 +17,24 @@ const PendingClass = () => {
   })
 
   const handleApprove = async (data, id) => {
-    console.log('Aprroved', data);
 
-    const res = await axiosSecure.post('/courses', data)
+    const courseData = {
+      image_url: data?.photoUrl,
+      enrollment: data?.price,
+      category: data?.category,
+      description : data?.description,
+      email : data?.email,
+      name : data?.name,
+      title : data?.title}
+    console.log('Aprroved', data, courseData);
+
+    const res = await axiosSecure.post('/courses', courseData)
     console.log('Course Added Successfull', res.data);
 
-    if(res.data.insertedId){
+    if (res.data.insertedId) {
       const res = await axiosSecure.delete(`/pendingClass/${id}`)
       console.log(res.data);
-      if(res.data.deletedCount > 0){
+      if (res.data.deletedCount > 0) {
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -38,12 +47,12 @@ const PendingClass = () => {
     }
   }
 
-  const handleDelete = async(id) => {
+  const handleDelete = async (id) => {
     const res = await axiosSecure.delete(`/pendingClass/${id}`)
 
     console.log(res.data);
 
-    if(res.data.deletedCount> 0 ){
+    if (res.data.deletedCount > 0) {
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -56,11 +65,11 @@ const PendingClass = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-5xl text-center text-red-500 font-bold">Pending Class: {pendingClasses?.length}</h1>
+    <div className="my-10">
+      <h1 className="text-4xl text-center text-red-500 font-bold">Pending Class: {pendingClasses?.length}</h1>
       <div>
 
-        <table className="table my-10">
+        <table className="table my-20">
 
           {/* head */}
           <thead>

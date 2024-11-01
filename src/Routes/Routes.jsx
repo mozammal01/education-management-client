@@ -23,6 +23,8 @@ import TotalEnrollment from "../pages/Dashboard/totalEnrollment/totalEnrollment"
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import PendingClass from "../pages/Dashboard/PendingClass/PendingClass";
+import YourClasses from "../pages/Dashboard/YourClasses/YourClasses";
+import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
 
 
 const router = createBrowserRouter([
@@ -94,6 +96,14 @@ const router = createBrowserRouter([
       {
         path: 'addClass',
         element:< AddClass></AddClass>
+      },
+      {
+        path: 'updateClass',
+        element:<UpdateClass></UpdateClass>
+      },
+      {
+        path:'yourClasses',
+        element: <YourClasses></YourClasses>
       },
 
       // Admin 

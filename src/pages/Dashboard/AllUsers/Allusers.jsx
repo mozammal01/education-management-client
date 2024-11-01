@@ -14,6 +14,7 @@ const Allusers = () => {
       return res.data
     }
   })
+  console.log('Users', users);
 
   const handleMakeAdmin = (id) => {
     axiosSecure.patch(`/users/admin/${id}`)
@@ -65,7 +66,7 @@ const Allusers = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
+              <th>User</th>
               <th>Role</th>
               <th>Email</th>
               <th>Delete</th>
@@ -75,7 +76,20 @@ const Allusers = () => {
             {
               users.map((user, i) => <tr key={i}>
                 <th>{i + 1}</th>
-                <td className="font-bold">{user?.name}</td>
+                <td>
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <img
+                          src={user?.photoUrl}
+                          alt="Avatar Tailwind CSS Component" />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{user?.name}</div>
+                    </div>
+                  </div>
+                </td>
                 <td>
                   <div className="dropdown me-10">
                     <div tabIndex={0} role="button" className="btn m-1">

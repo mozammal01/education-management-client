@@ -106,15 +106,7 @@ const Dashboard = () => {
                       </li>
 
                       <li>
-                        <NavLink to='/dashboard/yourClasses' className="text-center rounded">Your Classes</NavLink>
-                      </li>
-
-                      <li>
-                        <NavLink to='/dashboard/teachers' className="text-center rounded">Teachers</NavLink>
-                      </li>
-
-                      <li>
-                        <NavLink to='/dashboard/students' className="text-center rounded">Students</NavLink>
+                        <NavLink to='/dashboard/yourClasses' className="text-center rounded">My Class</NavLink>
                       </li>
 
                       <li>

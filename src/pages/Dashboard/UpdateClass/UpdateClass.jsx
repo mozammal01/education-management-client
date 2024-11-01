@@ -4,7 +4,7 @@ import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const AddClass = () => {
+const UpdateClass = () => {
 
   const axiosSecure = useAxiosSecure();
 
@@ -54,7 +54,7 @@ const AddClass = () => {
 
   return (
     <div>
-      <h1 className="text-5xl text-center text-red-600 font-bold">Add Class</h1>
+      <h1 className="text-5xl text-center text-red-600 font-bold">Update Class</h1>
       <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
 
         {/* Title */}
@@ -131,10 +131,10 @@ const AddClass = () => {
           {errors.description && <span className="text-red-600 font-bold">This field is required</span>}
         </div>
 
-        <input className="btn btn-primary w-full text-white" type="submit" value='Add Class' />
+        <input className="btn btn-primary w-full text-white" type="submit" value='Update Class' />
       </form>
     </div>
   );
 };
 
-export default AddClass;
+export default UpdateClass;

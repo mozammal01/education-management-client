@@ -34,7 +34,7 @@ const AllCourses = () => {
                 <p>{course.description}</p>
                 <div className="card-actions items-center justify-end">
                   <div className="badge badge-outline">{course.category}</div>
-                  <div className="btn btn-outline"><Link to={`/courseDetails/${course.id}`}>Enroll: {course.enrollment} TK</Link></div>
+                  <div className="btn btn-outline"><Link to={`/courseDetails/${course._id}`}>Enroll: {course.enrollment} TK</Link></div>
                 </div>
               </div>
             </div>)
