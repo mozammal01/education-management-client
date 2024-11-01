@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const GoogleSignIn = () => {
-  const { googleLogin } = useAuth();
+  const { googleLogin, theme } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,7 +29,7 @@ const GoogleSignIn = () => {
       })
   }
 
-  return <button onClick={handleGoogleLogin} className="flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"> <FcGoogle className="text-3xl" />
+  return <button onClick={handleGoogleLogin} className={`flex bg-slate-300 justify-center gap-2 p-2 items-center rounded w-full font-semibold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 ${theme === 'dark' ? 'text-black' : ''}`}> <FcGoogle className="text-3xl" />
     Sign In With Google</button>
 };
 

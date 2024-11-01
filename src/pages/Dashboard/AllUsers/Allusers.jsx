@@ -2,10 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { BiTrash } from "react-icons/bi";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const Allusers = () => {
 
   const axiosSecure = useAxiosSecure();
+  const {theme} = useAuth();
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
@@ -92,7 +94,7 @@ const Allusers = () => {
                 </td>
                 <td>
                   <div className="dropdown me-10">
-                    <div tabIndex={0} role="button" className="btn m-1">
+                    <div tabIndex={0} role="button" className={`btn m-1 ${theme === 'dark' ? 'bg-white text-black hover:bg-slate-300': ''}`}>
                       {
                         user?.role === 'admin' ? "Admin" : user?.role
                       }

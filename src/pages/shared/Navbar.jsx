@@ -3,10 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import useUser from '../../Hooks/useUser';
+import Theme from '../../components/Theme/Theme';
+import { BiMoon, BiSun } from 'react-icons/bi';
 
 const Navbar = () => {
 
-  const { user, logOut, loading } = useAuth();
+  const { user, logOut, loading, toggleTheme,theme } = useAuth();
+
 
   const [isUser] = useUser({ enabled: !loading && !!user?.email, user });
 
@@ -103,6 +106,13 @@ const Navbar = () => {
       {/* Navbar End */}
       <div className="navbar-end gap-5 flex items-center">
 
+        <Theme></Theme>
+        <label className="swap swap-rotate">
+          <input onClick={toggleTheme} type="checkbox" />
+          <div className="swap-on text-3xl"><BiMoon></BiMoon></div>
+          <div className="swap-off text-3xl"><BiSun></BiSun></div>
+        </label>
+
         {/* User Photo*/}
         {user ?
           <div className="dropdown dropdown-end">
@@ -118,7 +128,7 @@ const Navbar = () => {
                     src={userImg} />
               }
             </div>
-            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <ul tabIndex={0} className={`dropdown-content menu rounded-box z-[1] w-52 p-2 shadow ${theme === 'dark' ? 'bg-white': 'bg-base-100'}`}>
               <div className="p-2 flex flex-col font-bold text-black">
                 <li className="text-center py-2">{user?.displayName}</li>
                 {
@@ -130,7 +140,7 @@ const Navbar = () => {
             </ul>
           </div>
           :
-          <Link to='/signIn' className="btn hover:-translate-y-4">Sign In</Link>
+          <Link to='/signIn' className="btn bg-white text-black hover:-translate-y-2 hover:bg-white">Sign In</Link>
         }
 
       </div>

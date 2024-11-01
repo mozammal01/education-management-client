@@ -11,7 +11,7 @@ const YourClasses = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  const { data: yourClasses } = useQuery({
+  const { data: yourClasses , refetch} = useQuery({
     queryKey: ['yourClasses'],
     queryFn: async () => {
       const res = await axiosSecure.get(`/courses/your/${user?.email}`)

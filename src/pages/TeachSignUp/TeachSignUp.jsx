@@ -9,7 +9,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const TeachSignUp = () => {
 
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, theme } = useAuth();
   console.log(user);
   const axiosSecure = useAxiosSecure();
 
@@ -56,16 +56,16 @@ const TeachSignUp = () => {
       </Helmet>
       <div className="flex items-center justify-center py-10 md:bg-gradient-to-br from-blue-500 to-purple-600">
 
-        <div onSubmit={handleSubmit(onSubmit)} className="w-96 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
+        <div onSubmit={handleSubmit(onSubmit)} className={`w-96 max-w-md p-8 space-y-6 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white text-gray-600'}`}>
 
-          <h2 className="text-2xl font-bold text-center text-gray-800">Teacher Sign Up</h2>
+          <h2 className="text-2xl font-bold text-center">Teacher Sign Up</h2>
 
           {/* Form */}
           <form className="space-y-5">
 
             {/* Name */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Name</label>
+              <label className="font-bold">Name</label>
 
               <input
                 {...register('name')}
@@ -79,7 +79,7 @@ const TeachSignUp = () => {
 
             {/* Experience */}
             <div className="space-x-2">
-              <label className="text-gray-600 font-bold">Experience</label>
+              <label className="font-bold">Experience</label>
 
               <select className="border-2 rounded-xl p-1" {...register("experience")}>
                 <option value="beginner">Beginner</option>
@@ -90,7 +90,7 @@ const TeachSignUp = () => {
 
             {/* Email */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Email</label>
+              <label className="font-bold">Email</label>
 
               <input
                 {...register('email', { required: true })}
@@ -107,7 +107,7 @@ const TeachSignUp = () => {
 
             {/* Category */}
             <div className="space-x-2">
-              <label className="text-gray-600 font-bold">Category</label>
+              <label className="font-bold">Category</label>
 
               <select className="border-2 rounded-xl p-1" {...register("category")}>
                 <option value="WD">Web Development</option>

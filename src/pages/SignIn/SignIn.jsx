@@ -12,7 +12,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { signIn } = useAuth();
+  const { signIn, theme } = useAuth();
 
 
 
@@ -52,18 +52,18 @@ const SignIn = () => {
         <title>EDU || Sign IN</title>
       </Helmet>
 
-      <div className="flex items-center justify-center min-h-screen md:bg-gradient-to-br from-blue-500 to-purple-600">
+      <div className='flex items-center justify-center min-h-screen md:bg-gradient-to-br from-blue-500 to-purple-600 '>
 
-        <div className="w-80 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg my-10">
+        <div className={`w-80 max-w-md p-8 space-y-6 rounded-lg shadow-lg my-10 ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white text-gray-600'}`}>
 
-          <h2 className="text-2xl font-bold text-center text-gray-800">Sign In</h2>
+          <h2 className="text-2xl font-bold text-center">Sign In</h2>
 
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 
             {/* Email */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Email</label>
+              <label className="font-bold">Email</label>
 
               <input
                 {...register('email', { required: true })}
@@ -79,7 +79,7 @@ const SignIn = () => {
 
             {/* Password */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Password</label>
+              <label className="font-bold">Password</label>
 
               <input
                 {...register('password', { required: true })}
@@ -102,7 +102,7 @@ const SignIn = () => {
                 checked={showPassword}
                 onChange={togglePasswordVisibility}
               />
-              <label htmlFor="show-password" className=" text-gray-600 font-semibold">Show Password</label>
+              <label htmlFor="show-password" className="font-semibold">Show Password</label>
 
             </div>
 

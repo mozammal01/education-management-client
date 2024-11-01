@@ -11,7 +11,7 @@ import GoogleSignIn from "../../components/SocialLogin/GoogleSignIn";
 const SignUp = () => {
 
   const navigate = useNavigate();
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile, theme } = useAuth();
   const axiosPublic = useAxiosPublic();
 
   
@@ -72,16 +72,16 @@ const SignUp = () => {
       </Helmet>
       <div className="flex items-center justify-center py-10 md:bg-gradient-to-br from-blue-500 to-purple-600">
 
-        <div onSubmit={handleSubmit(onSubmit)} className="w-96 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
+        <div onSubmit={handleSubmit(onSubmit)} className={`w-96 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white  '}`}>
 
-          <h2 className="text-2xl font-bold text-center text-gray-800">Sign Up</h2>
+          <h2 className="text-2xl font-bold text-center">Sign Up</h2>
 
           {/* Form */}
           <form className="space-y-5">
 
             {/* First Name */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Name</label>
+              <label className="  font-bold">Name</label>
 
               <input
                 {...register('name')}
@@ -95,7 +95,7 @@ const SignUp = () => {
 
             {/* Photo Url */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Photo Url</label>
+              <label className="  font-bold">Photo Url</label>
 
               <input
                 {...register('photoUrl')}
@@ -108,7 +108,7 @@ const SignUp = () => {
 
             {/* Phone */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Phone Number</label>
+              <label className="  font-bold">Phone Number</label>
 
               <input
                 {...register('phone')}
@@ -121,7 +121,7 @@ const SignUp = () => {
 
             {/* Role */}
             {/* <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Role</label>
+              <label className="  font-bold">Role</label>
 
               <select {...register("role")}>
                 <option disabled value="Select a Role">Select a Role</option>
@@ -132,7 +132,7 @@ const SignUp = () => {
 
             {/* Email */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Email</label>
+              <label className="  font-bold">Email</label>
 
               <input
                 {...register('email', { required: true })}
@@ -148,7 +148,7 @@ const SignUp = () => {
 
             {/* Password */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Password</label>
+              <label className="  font-bold">Password</label>
 
               <input
                 {...register('pass1', { required: true })}
@@ -171,13 +171,13 @@ const SignUp = () => {
                 checked={showPassword}
                 onChange={togglePasswordVisibility}
               />
-              <label htmlFor="show-password" className=" text-gray-600 font-semibold">Show Password</label>
+              <label htmlFor="show-password" className="   font-semibold">Show Password</label>
 
             </div>
 
             {/* Confirm Password */}
             <div className="space-y-2">
-              <label className="text-gray-600 font-bold">Confirm Password</label>
+              <label className="  font-bold">Confirm Password</label>
 
               <input
                 {...register('pass2', { required: true })}
@@ -200,7 +200,7 @@ const SignUp = () => {
                 checked={showPassword2}
                 onChange={togglePasswordVisibility2}
               />
-              <label htmlFor="show-password2" className=" text-gray-600 font-semibold">Show Password</label>
+              <label htmlFor="show-password2" className="   font-semibold">Show Password</label>
 
             </div>
 

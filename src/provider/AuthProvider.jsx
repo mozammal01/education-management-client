@@ -2,7 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import { useNavigate } from "react-router-dom";
+import { BiMoon, BiSun } from "react-icons/bi";
+
 
 
 export const AuthContext = createContext(null);
@@ -13,11 +14,20 @@ const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+  const [theme, setTheme] = useState('light');
+
   const axiosSecure = useAxiosSecure();
 
 
+
+  useEffect(() => {
+    document.querySelector('html').setAttribute('data-theme', theme);
+  }, [theme]);
   
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   // Create User 
   const createUser = (email, password) => {
     setLoading(true)
@@ -81,12 +91,14 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    theme,
+    toggleTheme,
+    setTheme,
     createUser,
     signIn,
     googleLogin,
     logOut,
     updateUserProfile,
-
   }
 
 

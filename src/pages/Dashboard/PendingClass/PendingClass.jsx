@@ -22,10 +22,11 @@ const PendingClass = () => {
       image_url: data?.photoUrl,
       enrollment: data?.price,
       category: data?.category,
-      description : data?.description,
-      email : data?.email,
-      name : data?.name,
-      title : data?.title}
+      description: data?.description,
+      email: data?.email,
+      name: data?.name,
+      title: data?.title
+    }
     console.log('Aprroved', data, courseData);
 
     const res = await axiosSecure.post('/courses', courseData)
@@ -69,52 +70,56 @@ const PendingClass = () => {
       <h1 className="text-4xl text-center text-red-500 font-bold">Pending Class: {pendingClasses?.length}</h1>
       <div>
 
-        <table className="table my-20">
-
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Course</th>
-              <th>Email</th>
-              <th>Price</th>
-              <th>Name</th>
-              <th>Approve</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              pendingClasses?.map((pendingClass, i) =>
-                <tr key={i}>
-                  <td>{i + 1}</td>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src={pendingClass?.photoUrl}
-                            alt="Avatar Tailwind CSS Component" />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">{pendingClass?.title}</div>
-                      </div>
+        <div className="grid grid-cols-2 gap-5 my-20">
+          {
+            pendingClasses?.map(pendingClass =>
+              <div key={pendingClass?._id} className="card bg-base-100 w-96 shadow-xl max-h-[450px] my-10 mx-auto">
+                <figure>
+                  <img
+                    src={pendingClass.photoUrl}
+                    alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">
+                    {pendingClass.title}
+                  </h2>
+                  {/*  */}
+                  <div className="bg-base-200 collapse my-2">
+                    <input type="checkbox" className="peer" />
+                    <div
+                      className="collapse-title ">
+                      About this Course
                     </div>
-                  </td>
-                  <td>{pendingClass?.email}</td>
-                  <td>{pendingClass?.price}</td>
-                  <td>{pendingClass?.name}</td>
-                  <td><button onClick={() => handleApprove(pendingClass, pendingClass._id)} className="text-3xl bg-green-600 rounded-xl text-white p-2 my-2"><MdDone /></button></td>
-                  <td><button onClick={() => handleDelete(pendingClass?._id)} className="text-3xl bg-red-600 rounded-xl text-white p-2 my-2"><RxCross2 /></button></td>
-                </tr>
-              )
-            }
-          </tbody>
-        </table>
+                    <div
+                      className="collapse-content">
+                      <p>{pendingClass?.description}</p>
+                    </div>
+                  </div>
+                  <div className="my-2">
+                    <p className="badge badge-outline me-2">{pendingClass?.name}</p>
+                    <p className="badge badge-outline">{pendingClass?.email}</p>
+                  </div>
+                  <div className="card-actions items-center justify-between">
+                    <div>
+                      <div className="badge badge-neutral text-white me-5">{pendingClass.category}</div>
+                      <div className="btn btn-outline">{pendingClass.price} TK</div>
+                    </div>
+                    {/*  */}
+                    <div>
+                      <button onClick={() => handleApprove(pendingClass, pendingClass._id)} className="text-3xl bg-green-600 rounded-xl text-white p-2 my-2 me-2"><MdDone /></button>
+                      <button onClick={() => handleDelete(pendingClass?._id)} className="text-3xl bg-red-600 rounded-xl text-white p-2 my-2"><RxCross2 /></button>
+                    </div>
+                  </div>
+                </div>
+              </div>)
+          }
+        </div>
       </div>
     </div>
   );
 };
 
 export default PendingClass;
+{/* <td></td>
+                  <td></td>
+                </tr> */}
