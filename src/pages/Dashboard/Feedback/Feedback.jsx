@@ -41,7 +41,7 @@ const Feedback = () => {
 
 
   return (
-    <div> 
+    <div className="p-5"> 
 
       <h1 className="text-5xl text-center font-bold">Feedback</h1>
 

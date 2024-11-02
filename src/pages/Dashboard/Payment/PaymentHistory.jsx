@@ -15,7 +15,7 @@ const PaymentHistory = () => {
   console.log(payments);
 
   return (
-    <div>
+    <div className="p-5">
       <h1 className="text-5xl">You can See your Payments here : {payments?.length}</h1>
       <div>
 

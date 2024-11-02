@@ -56,7 +56,7 @@ const MyProfile = () => {
   }
 
   return (
-    <div>
+    <div className="p-5">
       <h1 className="text-5xl">Profile</h1>
       <div className="my-10 font-bold space-y-5">
 

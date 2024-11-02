@@ -16,7 +16,7 @@ const MyEnroll = () => {
   console.log(myEnroll);
 
   return (
-    <div>
+    <div className="p-5">
       <h1 className="text-5xl">You can See your Enroll here : {myEnroll?.length}</h1>
       <div>
 
