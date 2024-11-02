@@ -7,7 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 const Allusers = () => {
 
   const axiosSecure = useAxiosSecure();
-  const {theme} = useAuth();
+  const { theme } = useAuth();
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
@@ -21,6 +21,13 @@ const Allusers = () => {
   const handleMakeAdmin = (id) => {
     axiosSecure.patch(`/users/admin/${id}`)
       .then(res => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Maked Admin successfull",
+          showConfirmButton: false,
+          timer: 1500
+        });
         refetch();
         console.log(res.data);
       })
@@ -94,7 +101,7 @@ const Allusers = () => {
                 </td>
                 <td>
                   <div className="dropdown me-10">
-                    <div tabIndex={0} role="button" className={`btn m-1 ${theme === 'dark' ? 'bg-white text-black hover:bg-slate-300': ''}`}>
+                    <div tabIndex={0} role="button" className={`btn m-1 ${theme === 'dark' ? 'bg-white text-black hover:bg-slate-300' : ''}`}>
                       {
                         user?.role === 'admin' ? "Admin" : user?.role
                       }
@@ -103,7 +110,6 @@ const Allusers = () => {
                     {
                       user?.role === 'admin' ? ' ' : <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                         <li onClick={() => handleMakeAdmin(user?._id)}><a>Make Admin</a></li>
-
                       </ul>
                     }
 

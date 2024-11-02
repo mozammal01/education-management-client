@@ -39,7 +39,6 @@ const SignIn = () => {
           titleText: message
         });
       })
-    console.log(data)
   }
 
 

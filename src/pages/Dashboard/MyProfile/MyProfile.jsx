@@ -77,9 +77,9 @@ const MyProfile = () => {
 
         {/* Phone */}
         {userInfo?.phone ?
-          <h3 className="text-xl flex items-center justify-start">Phone: <input id="updatePhone" className="border-2 rounded-xl ms-2 px-1" type="number" defaultValue={userInfo?.phone} /><button onClick={handleUpdatePhoneNumber} className="btn-md">Update Phone Number</button></h3>
+          <h3 className="text-xl flex items-center justify-start">Phone: <input id="updatePhone" className="border-2 rounded-xl ms-2 px-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" type="number" defaultValue={userInfo?.phone} /><button onClick={handleUpdatePhoneNumber} className="btn-md">Update Phone Number</button></h3>
           :
-          <h3 className="text-xl flex items-center justify-start">Phone: <input id="addPhone" className="border-2 rounded-xl ms-2 px-1" type="number" /><button onClick={handleAddPhoneNumber} className="btn-md">Add Phone Number</button></h3>
+          <h3 className="text-xl flex items-center justify-start">Phone: <input id="addPhone" className="border-2 rounded-xl ms-2 px-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" type="number" /><button onClick={handleAddPhoneNumber} className="btn-md">Add Phone Number</button></h3>
         }
 
         {/* Role */}

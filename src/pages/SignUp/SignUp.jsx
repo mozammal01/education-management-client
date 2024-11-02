@@ -51,10 +51,8 @@ const SignUp = () => {
         })
     }
     else {
-      console.log('I am not a gay try to another person');
       Swal.fire("Password doesn't match");
     }
-    console.log(data, name)
   }
 
 
@@ -119,7 +117,7 @@ const SignUp = () => {
                 type="number"
                 id="phone"
                 placeholder="Enter Your phone number"
-                className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 mb-5 text-gray-900 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
             </div>
 
