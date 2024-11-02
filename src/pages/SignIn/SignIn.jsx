@@ -33,7 +33,11 @@ const SignIn = () => {
         navigate(location.state || '/')
       })
       .catch(err => {
-        console.error(err);
+        const message = err.code;
+        Swal.fire({
+          icon: "error",
+          titleText: message
+        });
       })
     console.log(data)
   }

@@ -14,7 +14,7 @@ const SignUp = () => {
   const { createUser, updateUserProfile, theme } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  
+
 
   // Form 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
@@ -43,7 +43,11 @@ const SignUp = () => {
           });
         })
         .catch(err => {
-          console.log(err);
+          const message = err.code;
+          Swal.fire({
+            icon: "error",
+            titleText: message
+          });
         })
     }
     else {
@@ -72,7 +76,7 @@ const SignUp = () => {
       </Helmet>
       <div className="flex items-center justify-center py-10 md:bg-gradient-to-br from-blue-500 to-purple-600">
 
-        <div onSubmit={handleSubmit(onSubmit)} className={`w-96 max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white  '}`}>
+        <div onSubmit={handleSubmit(onSubmit)} className={`w-96 max-w-md p-8 space-y-6 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white  '}`}>
 
           <h2 className="text-2xl font-bold text-center">Sign Up</h2>
 
