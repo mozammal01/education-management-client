@@ -4,15 +4,14 @@ import TeachTodayImg from '../../../assets/Others/TeachToday.jpg'
 const TeachToday = () => {
   return (
     <div className="bg-base-200 py-10 px-5 my-10 rounded">
-      <div className='flex gap-10 items-center'>
-        <div className="w-2/3 gap-10">
+      <div className='md:flex gap-10 items-center'>
+        <div className="md:w-2/3 gap-10">
           <img
             src={TeachTodayImg}
-            className="rounded-lg  shadow-2xl" />
-
+            className="rounded-lg shadow-2xl" />
         </div>
+        
         <div>
-
           <h1 className="text-5xl font-bold">Become an instructor</h1>
           <p className="py-6 font-semibold">
             Instructors from the world teach millions of learners on Udemy. we provide the tools and skills to teach what you love.

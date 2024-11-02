@@ -1,7 +1,7 @@
 import learnOnline from '../../../assets/Others/learn-online.png'
 const LearnOnline = () => {
   return (
-    <div className='flex my-40 justify-center items-center'>
+    <div className='md:flex my-40 justify-center items-center'>
       <div className='w-full'>
         <img src={learnOnline} alt="" />
       </div>

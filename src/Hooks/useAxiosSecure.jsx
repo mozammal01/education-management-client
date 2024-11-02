@@ -6,7 +6,7 @@ import { app } from "../firebase/firebase.config";
 
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:4000'
+  baseURL: 'https://education-management-server-flame.vercel.app'
 })
 
 const auth = getAuth(app);

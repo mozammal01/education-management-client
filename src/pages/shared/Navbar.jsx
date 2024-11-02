@@ -81,7 +81,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content text-black bg-base-100 font-semibold space-y-2 rounded-box z-[1] mt-3 w-52 p-5 shadow">
+            className={`dropdown-content bg-base-100 font-semibold space-y-2 rounded-box z-[1] mt-3 w-52 p-5 shadow ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
             {navLinks}
           </ul>
         </div>
@@ -149,3 +149,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+// https://education-management-server-flame.vercel.app/

@@ -68,9 +68,9 @@ const Banner = () => {
       <SwiperSlide>Slide 8</SwiperSlide>
       <SwiperSlide>Slide 9</SwiperSlide> */}
       <span ref={progressContent}></span>
-      <div className="autoplay-progress" slot="container-end">
+      <div className="autoplay-progress hidden" slot="container-end">
         <svg ref={progressCircle}>
-          <circle cx="24" cy="24" r="20"></circle>
+          <circle className='hidden' cx="24" cy="24" r="20"></circle>
         </svg>
       </div>
     </Swiper>

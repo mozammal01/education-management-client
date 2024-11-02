@@ -24,7 +24,7 @@ const ShowFeedback = () => {
   console.log(feedback);
 
   return (
-    <div>
+    <div className='my-20'>
 
       <div>
         <SectionTitle header='Feedback' subHeader='You can see here the opinion of the students'></SectionTitle>

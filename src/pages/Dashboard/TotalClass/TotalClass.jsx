@@ -13,7 +13,7 @@ const TotalClass = () => {
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    fetch('http://localhost:4000/coursesCount')
+    fetch('https://education-management-server-flame.vercel.app/coursesCount')
       .then(res => res.json())
       .then(data => {
         setCount(data.count);
@@ -21,7 +21,7 @@ const TotalClass = () => {
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:4000/courses?page=${currentPage}&size=${itemsPerPage}`)
+    fetch(`https://education-management-server-flame.vercel.app/courses?page=${currentPage}&size=${itemsPerPage}`)
       .then(res => res.json())
       .then(data => setAllClasses(data))
   }, [currentPage, itemsPerPage]);
