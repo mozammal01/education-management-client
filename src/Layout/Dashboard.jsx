@@ -8,11 +8,11 @@ const Dashboard = () => {
   const [isUser] = useUser({ enabled: !loading && !!user?.email, user });
 
   return (
-    <div className="md:grid grid-cols-10 min-h-screen">
+    <div className="lg:grid grid-cols-10 min-h-screen">
 
       {
         isUser?.admin ?
-          <div className="col-span-2">
+          <div className="col-span-3">
 
             {/* Admin */}
 
@@ -31,7 +31,7 @@ const Dashboard = () => {
                     d="M4 6h16M4 12h8m-8 6h16" />
                 </svg>
               </div>
-              <div className={`menu dropdown-content bg-cyan-400 md:flex flex-col p-4 font-bold gap-5 z-[1] w-80 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+              <div className={`menu dropdown-content bg-cyan-400 lg:flex flex-col p-4 font-bold gap-5 z-[1] w-80 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
 
                 <li>
                   <NavLink to='/dashboard/adminHome' className="text-center rounded">Admin Home</NavLink>
@@ -68,7 +68,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className={`menu hidden md:flex flex-col p-4 font-bold gap-8 me-1 -mt-7 h-screen fixed ${theme === 'light' ? 'bg-cyan-400 text-black' : 'bg-black text-white'}`}>
+            <div className={`menu hidden lg:flex flex-col p-4 font-bold gap-6 me-1 -mt-7 h-screen overflow-y-auto fixed w-[300px]  ${theme === 'light' ? 'bg-cyan-400 text-black' : 'bg-black text-white'}`}>
 
               <h3 className="text-xl font-extrabold my-5">Education Management</h3>
               <li>
@@ -111,7 +111,7 @@ const Dashboard = () => {
             {
               isUser?.student ?
 
-                <div className="col-span-2">
+                <div className="col-span-3">
 
                   <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -128,7 +128,7 @@ const Dashboard = () => {
                           d="M4 6h16M4 12h8m-8 6h16" />
                       </svg>
                     </div>
-                    <div className={`menu dropdown-content bg-cyan-400 md:flex flex-col p-4 font-bold gap-5 z-[1] w-80 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                    <div className={`menu dropdown-content bg-cyan-400 lg:flex flex-col p-4 font-bold gap-5 z-[1] w-80 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
 
 
                       <li>
@@ -161,7 +161,7 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  <div className={`menu hidden md:flex flex-col p-4 font-bold gap-8 me-1 -mt-7 h-screen fixed ${theme === 'light' ? 'bg-cyan-400 text-black' : 'bg-black text-white'}`}>
+                  <div className={`menu hidden lg:flex flex-col p-4 font-bold gap-8 me-1 -mt-7 h-screen fixed ${theme === 'light' ? 'bg-cyan-400 text-black' : 'bg-black text-white'}`}>
 
                     <h3 className="text-xl font-extrabold my-5">Education Management</h3>
                     <li>
@@ -198,7 +198,7 @@ const Dashboard = () => {
                 <>
                   {isUser?.teacher &&
 
-                    <div className="col-span-2">
+                    <div className="col-span-3">
 
                       <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -215,7 +215,7 @@ const Dashboard = () => {
                               d="M4 6h16M4 12h8m-8 6h16" />
                           </svg>
                         </div>
-                        <div className={`menu dropdown-content bg-cyan-400 md:flex flex-col p-4 font-bold gap-5 z-[1] w-80 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                        <div className={`menu dropdown-content bg-cyan-400 lg:flex flex-col p-4 font-bold gap-5 z-[1] w-80 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
                           <li>
                             <NavLink to='/dashboard/teacherHome' className="text-center rounded">Teacher Home</NavLink>
                           </li>
@@ -240,7 +240,7 @@ const Dashboard = () => {
                       </div>
 
                     
-                      <div className={`menu hidden md:flex flex-col p-4 font-bold gap-8 me-1 -mt-7 h-screen fixed ${theme === 'light' ? 'bg-cyan-400 text-black' : 'bg-black text-white'}`}>
+                      <div className={`menu hidden lg:flex flex-col p-4 font-bold gap-8 me-1 -mt-7 h-screen fixed ${theme === 'light' ? 'bg-cyan-400 text-black' : 'bg-black text-white'}`}>
 
                         <h3 className="text-xl font-extrabold my-5">Education Management</h3>
 
@@ -283,11 +283,11 @@ const Dashboard = () => {
 
 
 
-      <div className={`col-span-8 ${theme === 'dark' ? 'bg-black' : ''}`}>
+      <div className={`col-span-6 ${theme === 'dark' ? 'bg-black' : ''}`}>
         <Outlet></Outlet>
       </div>
 
-      {/* <div className={`hidden md:block text-white ${theme === 'dark' ? 'bg-black' : 'bg-cyan-400'}`}>
+      {/* <div className={`hidden lg:block text-white ${theme === 'dark' ? 'bg-black' : 'bg-cyan-400'}`}>
         <h2 className="text-3xl">Here's your Awesome Dashboard</h2>
       </div> */}
 

@@ -66,10 +66,10 @@ const AddClass = () => {
           {errors.title && <span className="text-red-600 font-bold">This field is required</span>}
         </div>
 
-        <div className="md:flex gap-5">
+        <div className="lg:flex gap-5">
 
           {/* Name */}
-          <div className="md:w-1/2">
+          <div className="lg:w-1/2">
             <label className="label">
               <span className="label-text">Name</span>
             </label>
@@ -77,7 +77,7 @@ const AddClass = () => {
           </div>
 
           {/* Email */}
-          <div className="md:w-1/2">
+          <div className="lg:w-1/2">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
@@ -86,10 +86,10 @@ const AddClass = () => {
         </div>
 
 
-        <div className="md:flex gap-5">
+        <div className="lg:flex gap-5">
 
           {/* Price */}
-          <div className="md:w-1/2">
+          <div className="lg:w-1/2">
             <label className="label">
               <span className="label-text">Price</span>
             </label>
@@ -98,7 +98,7 @@ const AddClass = () => {
           </div>
 
           {/* Category */}
-          <div className="md:w-1/2">
+          <div className="lg:w-1/2">
             <label className="label">
               <span className="label-text">Category</span>
             </label>

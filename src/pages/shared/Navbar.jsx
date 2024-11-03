@@ -135,7 +135,7 @@ const Navbar = () => {
                   isUser?.admin ? <Link to='/dashboard/allUsers' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link> :
                     <Link to='/dashboard' className="hover:bg-warning rounded-xl text-center py-2">Dashboard</Link>
                 }
-                <li onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</li>
+                <button onClick={handleLogOut} className="hover:bg-warning rounded-xl text-center py-2">LogOut</button>
               </div>
             </ul>
           </div>

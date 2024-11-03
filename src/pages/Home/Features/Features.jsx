@@ -5,7 +5,7 @@ import { FaHeadphonesSimple } from "react-icons/fa6";
 
 const Features = () => {
   return (
-    <div className='my-40 md:grid grid-cols-3 gap-10 mx-20 space-y-10'>
+    <div className='my-40 md:grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-center mx-20 space-y-10'>
       <div className="card bg-base-100 w-80 shadow-xl hover:bg-blue-600 hover:text-white">
         <figure className="px-10 pt-10 card-image">
           <FaUserGraduate
