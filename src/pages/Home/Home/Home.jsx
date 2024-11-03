@@ -14,12 +14,12 @@ const Home = () => {
         <title>EDU || HOME</title>
       </Helmet>
       <div>
-        {/* <Banner></Banner>
+        <Banner></Banner>
         <PopularCourses></PopularCourses>
-        <Features></Features> */}
+        <Features></Features>
         <LearnOnline></LearnOnline>
-          {/* <TeachToday></TeachToday>
-          <ShowFeedback></ShowFeedback> */}
+        <TeachToday></TeachToday>
+        <ShowFeedback></ShowFeedback>
       </div>
     </>
   );

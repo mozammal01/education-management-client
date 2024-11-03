@@ -24,11 +24,11 @@ const PopularCourses = () => {
 
 
   return (
-    <div className="">
+    <div>
       <SectionTitle header="Courses" subHeader="You can see what you want to learn"></SectionTitle>
-      <div className="text-center">
+      <div className="text-center hidden lg:block">
         <Swiper
-          slidesPerView={"auto"}
+          slidesPerView={3}
           spaceBetween={30}
           centeredSlides={true}
           grabCursor={true}
@@ -41,9 +41,10 @@ const PopularCourses = () => {
           {
             popularCourses.map(course =>
               <SwiperSlide key={course.id}>
-                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] my-20 mx-auto">
+                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] min-h-[450px] my-20 mx-auto">
                   <figure>
                     <img
+                      className="max-h-[220px]"
                       src={course.image_url}
                       alt="Shoes" />
                   </figure>
@@ -64,6 +65,87 @@ const PopularCourses = () => {
         </Swiper>
         <Link to='/allCourses'><button className="btn my-5">View All Courses</button></Link>
       </div>
+
+      <div className="text-center hidden md:block lg:hidden">
+        <Swiper
+          slidesPerView={2}
+          spaceBetween={30}
+          centeredSlides={true}
+          grabCursor={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {
+            popularCourses.map(course =>
+              <SwiperSlide key={course.id}>
+                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] min-h-[450px] my-20 mx-auto">
+                  <figure>
+                    <img
+                      className="max-h-[220px]"
+                      src={course.image_url}
+                      alt="Shoes" />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">
+                      {course.title}
+                      <div className="badge badge-secondary">NEW</div>
+                    </h2>
+                    <p>{course.description}</p>
+                    <div className="card-actions items-center justify-end">
+                      <div className="badge badge-outline">{course.category}</div>
+                      <div className="btn btn-outline"><Link to={`/courseDetails/${course._id}`}>Enroll: {course.enrollment} TK</Link></div>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>)
+          }
+        </Swiper>
+        <Link to='/allCourses'><button className="btn my-5">View All Courses</button></Link>
+      </div>
+
+      <div className="text-center block md:hidden">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          centeredSlides={true}
+          grabCursor={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {
+            popularCourses.map(course =>
+              <SwiperSlide key={course.id}>
+                <div className="card bg-base-100 w-96 shadow-xl max-h-[450px] min-h-[450px] my-20 mx-auto">
+                  <figure>
+                    <img
+                      className="max-h-[220px]"
+                      src={course.image_url}
+                      alt="Shoes" />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">
+                      {course.title}
+                      <div className="badge badge-secondary">NEW</div>
+                    </h2>
+                    <p>{course.description}</p>
+                    <div className="card-actions items-center justify-end">
+                      <div className="badge badge-outline">{course.category}</div>
+                      <div className="btn btn-outline"><Link to={`/courseDetails/${course._id}`}>Enroll: {course.enrollment} TK</Link></div>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>)
+          }
+        </Swiper>
+        <Link to='/allCourses'><button className="btn my-5">View All Courses</button></Link>
+      </div>
+
     </div>
   );
 };

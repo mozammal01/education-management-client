@@ -21,7 +21,6 @@ const ShowFeedback = () => {
     }
   })
 
-  console.log(feedback);
 
   return (
     <div className='my-20'>

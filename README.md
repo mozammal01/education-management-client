@@ -1,8 +1,18 @@
-# React + Vite
+# Education Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Admin username: Admin
+Admin email: iamadmin@gmail.com
+Admin password: iamadmin@gmail.com
 
-Currently, two official plugins are available:
+Live Site Url: [text](https://education-management-93233.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Responsive Design
+* Dark and Light Theme
+* User Dashboard 
+* User Profile
+* Different Courses
+* Course enroll
+* Student Feedback
+* Apply for teacher
+* Teachers can Add class
+* Payment Gateway

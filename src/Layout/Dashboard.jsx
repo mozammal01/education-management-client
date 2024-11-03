@@ -109,7 +109,7 @@ const Dashboard = () => {
           :
           <>
             {
-              isUser.student ?
+              isUser?.student ?
 
                 <div className="col-span-2">
 
@@ -196,7 +196,7 @@ const Dashboard = () => {
                 </div>
                 :
                 <>
-                  {isUser.teacher &&
+                  {isUser?.teacher &&
 
                     <div className="col-span-2">
 
