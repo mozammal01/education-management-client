@@ -4,7 +4,7 @@ Admin username: Admin
 Admin email: iamadmin@gmail.com
 Admin password: iamadmin@gmail.com
 
-Live Site Url: [text](https://education-management-93233.web.app/)
+Live Site Url: [https://education-management-93233.web.app/]
 
 * Responsive Design
 * Dark and Light Theme
