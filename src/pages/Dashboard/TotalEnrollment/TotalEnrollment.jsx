@@ -17,9 +17,7 @@ const TotalEnrollment = () => {
     <div className="my-10">
       <h1 className="text-4xl text-center font-bold text-red-500">Total Enrollment: {enrolls?.length}</h1>
       <div>
-
         <table className="table my-20">
-
           <thead>
             <tr>
               <th></th>
