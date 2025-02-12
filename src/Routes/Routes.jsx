@@ -19,12 +19,12 @@ import MyEnroll from "../pages/Dashboard/MyEnroll/MyEnroll";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import AllCourses from "../pages/AllCourses/AllCourses";
 import Feedback from "../pages/Dashboard/Feedback/Feedback";
-import TotalEnrollment from "../pages/Dashboard/totalEnrollment/totalEnrollment";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import PendingClass from "../pages/Dashboard/PendingClass/PendingClass";
 import YourClasses from "../pages/Dashboard/YourClasses/YourClasses";
 import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
+import TotalEnrollment from "../pages/Dashboard/TotalEnrollment/TotalEnrollment";
 
 
 const router = createBrowserRouter([
