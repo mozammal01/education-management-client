@@ -20,7 +20,6 @@ const TotalEnrollment = () => {
 
         <table className="table my-20">
 
-          {/* head */}
           <thead>
             <tr>
               <th></th>
