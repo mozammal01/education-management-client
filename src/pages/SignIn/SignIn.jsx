@@ -5,10 +5,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import GoogleSignIn from "../../components/SocialLogin/GoogleSignIn";
-
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const SignIn = () => {
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -55,14 +58,23 @@ const SignIn = () => {
         <title>EDU || Sign IN</title>
       </Helmet>
 
-      <div className='flex items-center justify-center min-h-screen md:bg-gradient-to-br from-blue-500 to-purple-600 '>
+      <div
+        ref={ref}
+        initial={{ opacity: 0, y: 100 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        transition={{ duration: 0.5 }}
+        className='flex items-center justify-center min-h-screen md:bg-gradient-to-br from-blue-500 to-purple-600 '>
 
-        <div className={`w-80 max-w-md p-8 space-y-6 rounded-lg shadow-lg my-10 ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white text-gray-600'}`}>
+        <motion.div initial={{ opacity: 0, y: 100 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        transition={{ duration: 0.5 }} className={`w-80 max-w-md p-8 space-y-6 rounded-lg shadow-lg my-10 ${theme === 'dark' ? 'bg-slate-900 text-white' : 'bg-white text-gray-600'}`}>
 
           <h2 className="text-2xl font-bold text-center">Sign In</h2>
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <motion.form onSubmit={handleSubmit(onSubmit)} initial={{ opacity: 0, y: 100 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+          transition={{ duration: 0.5 }} className="space-y-5">
 
             {/* Email */}
             <div className="space-y-2">
@@ -126,11 +138,11 @@ const SignIn = () => {
 
             <p>Do not have an Account ? <Link to="/signUp" className="font-bold underline">Sign Up</Link></p>
 
-          </form>
+          </motion.form>
 
           <GoogleSignIn></GoogleSignIn>
 
-        </div>
+        </motion.div>
 
       </div>
     </>

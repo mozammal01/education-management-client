@@ -7,10 +7,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const ShowFeedback = () => {
-
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const axiosPublic = useAxiosPublic();
 
   const { data: feedback } = useQuery({
@@ -23,11 +25,16 @@ const ShowFeedback = () => {
 
 
   return (
-    <div className='my-20'>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 100 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+      transition={{ duration: 0.5 }}
+      className='my-20'>
 
-      <div>
+      <motion.div>
         <SectionTitle header='Feedback' subHeader='You can see here the opinion of the students'></SectionTitle>
-      </div>
+      </motion.div>
       <div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper text-center">
 
@@ -69,7 +76,7 @@ const ShowFeedback = () => {
 
         </Swiper>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
