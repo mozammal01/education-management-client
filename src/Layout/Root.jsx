@@ -5,17 +5,15 @@ import Footer from "../pages/shared/Footer";
 const Root = () => {
   const location = useLocation();
 
-  const noNavbarFooter = location.pathname.includes('/teachOn')
+  const noNavbarFooter = location.pathname.includes("/teachOn");
 
   return (
     <div>
       {noNavbarFooter || <Navbar></Navbar>}
-      <div className="max-w-7xl mx-auto">
-
+      <div className="container mx-auto">
         <Outlet></Outlet>
       </div>
       {noNavbarFooter || <Footer></Footer>}
-
     </div>
   );
 };

@@ -30,8 +30,6 @@ const PopularCourses = () => {
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
-          centeredSlides={true}
-          grabCursor={true}
           pagination={{
             clickable: true,
           }}

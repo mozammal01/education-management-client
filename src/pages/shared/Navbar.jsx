@@ -58,7 +58,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar bg-black text-white bg-opacity-50 z-10 fixed top-0 left-1/2 right-1/2 -translate-x-1/2 max-w-7xl">
+    <div className="navbar bg-black text-white bg-opacity-50 z-10 fixed top-0 left-1/2 right-1/2 -translate-x-1/2 px-10">
 
       {/* Navbar Start */}
       <div className="navbar-start">
